@@ -1,0 +1,70 @@
+"""
+Run an ASSISTANT prompt on a patient case (original or rewritten).
+
+User selects whether to use the rewritten case. Retrieval of guidelines
+is handled internally by the pre-configured ChatGPT Assistant.
+"""
+
+import sys
+import os
+
+# -----------------------------
+# Add the parallel 'prompts' folder to sys.path
+# -----------------------------
+current_dir = os.path.dirname(os.path.abspath(__file__))
+prompts_dir = os.path.abspath(os.path.join(current_dir, '..', 'prompts'))
+sys.path.append(prompts_dir)
+
+# -----------------------------
+# Imports
+# -----------------------------
+from prompts_templates import get_prompt_for_configuration
+from chatgpt import chatgpt_assistant
+
+# -----------------------------
+# User configuration
+# -----------------------------
+use_rewritten = input("Use rewritten case? (y/n): ").strip().lower() == "y"
+
+# -----------------------------
+# Load original patient case
+# -----------------------------
+case_txt_path = os.path.abspath(os.path.join(current_dir, '..', 'data', 'dummy_patients', 'example_case_de.txt'))
+
+with open(case_txt_path, 'r', encoding='utf-8') as f:
+    case_text = f.read().strip()
+
+# -----------------------------
+# If user wants rewritten, call rewrite.py
+# -----------------------------
+if use_rewritten:
+    # Temporarily add current folder to sys.path to import rewrite.py
+    sys.path.append(current_dir)
+    try:
+        from rewrite import rewrite_case_from_txt
+        case_text = rewrite_case_from_txt(case_txt_path)
+        print("=== Using rewritten case ===\n")
+    except ImportError:
+        print("Rewrite function not found. Using original case.\n")
+    finally:
+        # Optional: remove current folder from sys.path after import
+        if current_dir in sys.path:
+            sys.path.remove(current_dir)
+
+# -----------------------------
+# Format Assistant prompt
+# -----------------------------
+prompt = get_prompt_for_configuration(case_text, 'assistant')
+
+# -----------------------------
+# Run prompt using ChatGPT Assistant
+# -----------------------------
+response = chatgpt_assistant(prompt)
+
+# -----------------------------
+# Output
+# -----------------------------
+print("=== Case Text ===")
+print(case_text)
+print("\n=== Assistant Prompt Output ===")
+print(response)

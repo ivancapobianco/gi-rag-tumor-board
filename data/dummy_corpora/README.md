@@ -14,7 +14,7 @@ The `dummy_guidelines_with_embeddings.json` file contains the same chunks with
 and do not reflect real semantic vectors.
 
 The code to generate real embeddings for the JSON corpora is located in the
-`processing` folder (`embedding.py`).
+`processing` folder (`corpora_embedding.py`).
 
 ## Note
 

@@ -9,6 +9,13 @@ No clinical use is intended.
 The real study used German S3 and NCCN clinical practice guidelines accessed under
 institutional licenses.
 
+The `dummy_guidelines_with_embeddings.json` file contains the same chunks with
+**dummy embeddings** added for demonstration purposes. These embeddings are placeholders
+and do not reflect real semantic vectors.
+
+The code to generate real embeddings for the JSON corpora is located in the
+`processing` folder (`embedding.py`).
+
 ## Note
 
 Some corpus chunks intentionally include `<chart>` tags and embedded JSON tables.
@@ -19,4 +26,3 @@ and structured via table parsing.
 
 This heterogeneous formatting reflects real-world multimodal guideline documents
 and is preserved to demonstrate the robustness of the retrieval pipeline.
-

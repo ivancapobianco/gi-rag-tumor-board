@@ -5,8 +5,11 @@ This module contains the four main prompt templates used in the study:
 1. Rewriting prompt (German → English standardization)
 2. Simple request (no retrieval baseline)
 3. ChatGPT Assistant prompt (with uploaded PDFs)
-4. Custom RAG prompt (with retrieved chunks)
+4. Custom RAG prompt (with retrieved guideline chunks)
+
+No patient data or guideline content is included.
 """
+
 
 # =============================================================================
 # PROMPT TYPE 1: REWRITING PROMPT

@@ -47,9 +47,7 @@ case_txt_path = os.path.abspath(os.path.join(current_dir, '..', 'data', 'dummy_p
 with open(case_txt_path, 'r', encoding='utf-8') as f:
     case_text = f.read().strip()
 
-# -----------------------------
-# If user wants rewritten, call rewrite.py
-# -----------------------------
+
 # -----------------------------
 # If user wants rewritten, call rewrite.py
 # -----------------------------

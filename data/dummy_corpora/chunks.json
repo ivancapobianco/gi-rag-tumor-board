@@ -46,7 +46,7 @@
     "source": "Synthetic Esophageal Cancer Guidelines (Dummy)",
     "section": "Multidisciplinary Decision-Making",
     "text": "Treatment planning for esophageal cancer is best performed within a multidisciplinary team setting. Joint review of clinical, radiologic, and pathologic data supports balanced decision-making and facilitates individualized treatment recommendations based on disease stage, patient fitness, and institutional expertise."
-  }
+  },
   {
     "chunk_id": 201,
     "source": "Synthetic NCCN-like Guideline (Image-derived Dummy)",
@@ -64,19 +64,17 @@
     "source": "Synthetic NCCN-like Guideline (Image-derived Dummy)",
     "origin": "chart_image_to_text",
     "text": "<chart>\nSYSTEMIC THERAPY PRINCIPLES\n- Regimen selection should consider performance status and comorbidities\n- Two-drug chemotherapy combinations are generally preferred due to lower toxicity\n- Targeted or immune-based therapies may be considered based on biomarker status\n- Dose modifications may be required depending on tolerance\n</chart>"
-  }
+  },
   {
-  "chunk_id": 204,
-  "source": "Synthetic Pathology Guidelines (Table-derived Dummy)",
-  "origin": "chart_table_to_json",
-  "text": "PATHOLOGIC REVIEW — SYNTHETIC TABLE EXTRACTION\nThe following table was extracted from a guideline chart and converted into structured JSON format for downstream retrieval:\n\nTABLE_JSON:\n[\n  [\n    {\n      \"Specimen Type\": \"---\",\n      \"Reporting Requirements\": \"---\"\n    },\n    {\n      \"Specimen Type\": \"Biopsy\",\n      \"Reporting Requirements\": \"Include histologic tumor type, grade, presence of invasion, and assessment of Barrett-associated dysplasia. Universal testing for mismatch repair status is recommended in newly diagnosed cases.\"\n    },\n    {\n      \"Specimen Type\": \"Endoscopic resection\",\n      \"Reporting Requirements\": \"Report depth of invasion, margin status, lymphovascular invasion, histologic grade, and tumor subtype. Molecular testing should be performed if not previously documented.\"\n    },\n    {\n      \"Specimen Type\": \"Esophagogastrectomy without prior chemoradiation\",\n      \"Reporting Requirements\": \"Include tumor location relative to the esophagogastric junction, nodal status, total lymph node count, and pathologic staging parameters.\"\n    },\n    {\n      \"Specimen Type\": \"Esophagogastrectomy with prior chemoradiation\",\n      \"Reporting Requirements\": \"Extensive sampling of the tumor bed is recommended, with documentation of treatment response and residual disease when present.\"\n    }\n  ]\n]\n\nNOTE: This table represents a synthetic, paraphrased approximation of guideline-based reporting elements."
-  }
+    "chunk_id": 204,
+    "source": "Synthetic Pathology Guidelines (Table-derived Dummy)",
+    "origin": "chart_table_to_json",
+    "text": "PATHOLOGIC REVIEW — SYNTHETIC TABLE EXTRACTION\nThe following table was extracted from a guideline chart and converted into structured JSON format for downstream retrieval:\n\nTABLE_JSON:\n[\n  [\n    {\n      \"Specimen Type\": \"---\",\n      \"Reporting Requirements\": \"---\"\n    },\n    {\n      \"Specimen Type\": \"Biopsy\",\n      \"Reporting Requirements\": \"Include histologic tumor type, grade, presence of invasion, and assessment of Barrett-associated dysplasia. Universal testing for mismatch repair status is recommended in newly diagnosed cases.\"\n    },\n    {\n      \"Specimen Type\": \"Endoscopic resection\",\n      \"Reporting Requirements\": \"Report depth of invasion, margin status, lymphovascular invasion, histologic grade, and tumor subtype. Molecular testing should be performed if not previously documented.\"\n    },\n    {\n      \"Specimen Type\": \"Esophagogastrectomy without prior chemoradiation\",\n      \"Reporting Requirements\": \"Include tumor location relative to the esophagogastric junction, nodal status, total lymph node count, and pathologic staging parameters.\"\n    },\n    {\n      \"Specimen Type\": \"Esophagogastrectomy with prior chemoradiation\",\n      \"Reporting Requirements\": \"Extensive sampling of the tumor bed is recommended, with documentation of treatment response and residual disease when present.\"\n    }\n  ]\n]\n\nNOTE: This table represents a synthetic, paraphrased approximation of guideline-based reporting elements."
+  },
   {
-  "chunk_id": 205,
-  "source": "Synthetic Multidisciplinary Care Principles (Dummy)",
-  "origin": "chart_image_to_text",
-  "text": "<chart>\nMULTIDISCIPLINARY MANAGEMENT\n- Treatment planning should occur within a multidisciplinary tumor board\n- Review of imaging, pathology, and clinical status is recommended prior to therapy\n- Consensus recommendations should be documented\n</chart>\n\nAdditional note:\nStructured tables extracted from guideline figures (e.g., pathology reporting requirements) were converted into JSON to support structured retrieval and reasoning."
+    "chunk_id": 205,
+    "source": "Synthetic Multidisciplinary Care Principles (Dummy)",
+    "origin": "chart_image_to_text",
+    "text": "<chart>\nMULTIDISCIPLINARY MANAGEMENT\n- Treatment planning should occur within a multidisciplinary tumor board\n- Review of imaging, pathology, and clinical status is recommended prior to therapy\n- Consensus recommendations should be documented\n</chart>\n\nAdditional note:\nStructured tables extracted from guideline figures (e.g., pathology reporting requirements) were converted into JSON to support structured retrieval and reasoning."
   }
 ]
-
-

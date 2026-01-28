@@ -63,6 +63,12 @@
     "chunk_id": 203,
     "source": "Synthetic NCCN-like Guideline (Image-derived Dummy)",
     "origin": "chart_image_to_text",
+    "table_json": [
+      [
+        {"Specimen Type": "---", "Reporting Requirements": "---"},
+        {"Specimen Type": "Biopsy", "Reporting Requirements": "Include histologic tumor type..."}
+      ]
+    ],
     "text": "<chart>\nSYSTEMIC THERAPY PRINCIPLES\n- Regimen selection should consider performance status and comorbidities\n- Two-drug chemotherapy combinations are generally preferred due to lower toxicity\n- Targeted or immune-based therapies may be considered based on biomarker status\n- Dose modifications may be required depending on tolerance\n</chart>"
   },
   {

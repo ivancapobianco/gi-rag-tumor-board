@@ -3,6 +3,10 @@ Run an ASSISTANT prompt on a patient case (original or rewritten).
 
 User selects whether to use the rewritten case. Retrieval of guidelines
 is handled internally by the pre-configured ChatGPT Assistant.
+
+IMPORTANT:
+- Model selection is handled on the Assistant side (not here).
+- Any guideline PDFs or documents must be uploaded/available in the Assistant environment.
 """
 
 import sys
@@ -20,6 +24,12 @@ sys.path.append(prompts_dir)
 # -----------------------------
 from prompts_templates import get_prompt_for_configuration
 from chatgpt import chatgpt_assistant
+
+# -----------------------------
+# User instructions
+# -----------------------------
+print("NOTE: Model selection is handled internally by the ChatGPT Assistant.")
+print("Ensure any guideline PDFs are uploaded to the Assistant if you want them referenced.\n")
 
 # -----------------------------
 # User configuration

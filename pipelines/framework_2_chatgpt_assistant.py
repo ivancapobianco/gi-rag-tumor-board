@@ -6,7 +6,7 @@ is handled internally by the pre-configured ChatGPT Assistant.
 
 IMPORTANT:
 - Model selection is handled on the Assistant side (not here).
-- Any guideline PDFs or documents must be uploaded/available in the Assistant environment.
+- Any guideline PDFs or documents must be uploaded/available in the Assistant environment, if needed.
 """
 
 import sys

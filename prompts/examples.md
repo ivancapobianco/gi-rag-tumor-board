@@ -1,6 +1,8 @@
 # Prompt Examples
 
-This document illustrates how prompts were formulated across different configurations in our study. Examples are based on a representative esophageal cancer case and demonstrate the four main prompt strategies used.
+This document illustrates how prompts were formulated across different configurations in our study. It is intended for transparency and methodological reproducibility.
+Examples are based on a representative esophageal cancer case and demonstrate the four main prompt strategies used.
+
 
 ## Overview of Prompt Types
 

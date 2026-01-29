@@ -4,70 +4,70 @@
     "source": "Synthetic Esophageal Cancer Guidelines (Dummy)",
     "selected_corpora": 0,
     "text": "Initial evaluation of suspected esophageal or esophagogastric junction cancer includes a detailed clinical assessment, upper gastrointestinal endoscopy with biopsy, and cross-selected_corporaal imaging of the chest and abdomen. Functional staging with FDG-PET/CT is recommended when curative treatment is considered. Endoscopic ultrasound may be used to assess local tumor depth and regional lymph node involvement in the absence of distant metastases.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],  
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 102,
     "source": "Synthetic Esophageal Cancer Guidelines (Dummy)",
     "selected_corpora": 0,
     "text": "Tumors involving the esophagogastric junction should be categorized according to their anatomical epicenter to guide treatment planning. Lesions primarily located in the distal esophagus or true junctional region are managed using esophageal cancer treatment strategies, whereas tumors extending predominantly into the stomach are treated according to gastric cancer principles.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 103,
     "source": "Synthetic Esophageal Cancer Guidelines (Dummy)",
     "selected_corpora": 1,
     "text": "Before surgical treatment, patients should be evaluated for physiological fitness and comorbidities. Esophagectomy is generally reserved for patients with resectable disease who have adequate functional status. Tumors invading adjacent vital structures or associated with distant metastases are considered unsuitable for primary surgical reselected_corpora.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 104,
     "source": "Synthetic Esophageal Cancer Guidelines (Dummy)",
     "selected_corpora": 1,
     "text": "Early-stage tumors confined to the mucosa may be managed with endoscopic reselected_corpora followed by local ablative techniques in specialized centers. Tumors with submucosal invasion or regional lymph node involvement typically require surgical reselected_corpora, often combined with multimodal therapy depending on stage and risk factors.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 105,
     "source": "Synthetic Esophageal Cancer Guidelines (Dummy)",
     "selected_corpora": 1,
     "text": "For patients with locally advanced esophageal adenocarcinoma, combined treatment strategies are commonly employed. Preoperative chemoradiation followed by surgical reselected_corpora is a widely used approach for tumors of the thoracic esophagus and esophagogastric junction. Perioperative systemic therapy may be considered as an alternative in selected distal tumors.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 106,
     "source": "Synthetic Esophageal Cancer Guidelines (Dummy)",
     "selected_corpora": 1,
     "text": "Selection of systemic therapy should account for performance status, comorbid conditions, and anticipated toxicity. Two-drug chemotherapy regimens are generally preferred for advanced disease due to improved tolerability, while more intensive regimens are reserved for fit patients under close monitoring.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 107,
     "source": "Synthetic Esophageal Cancer Guidelines (Dummy)",
     "selected_corpora": 1,
     "text": "Molecular profiling may provide therapeutic guidance in advanced disease. Assessment of mismatch repair status, HER2 expression, and other biomarkers can inform the use of targeted or immune-based therapies. Broad genomic testing may be considered when standard treatment options are limited.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 108,
     "source": "Synthetic Esophageal Cancer Guidelines (Dummy)",
     "selected_corpora": 1,
     "text": "Treatment planning for esophageal cancer is best performed within a multidisciplinary team setting. Joint review of clinical, radiologic, and pathologic data supports balanced decision-making and facilitates individualized treatment recommendations based on disease stage, patient fitness, and institutional expertise.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 201,
     "source": "Synthetic NCCN-like Guideline (Image-derived Dummy)",
     "selected_corpora": 1,
     "text": "<chart>\nWORKUP FOR SUSPECTED ESOPHAGEAL OR EGJ CANCER\n1. Clinical history and physical examination\n2. Upper gastrointestinal endoscopy with biopsy\n3. Cross-selected_corporaal imaging of chest and abdomen with contrast\n4. FDG-PET/CT if no distant metastatic disease is identified\n5. Endoscopic ultrasound for local staging when feasible\n6. Nutritional assessment and counseling\n7. Assessment of performance status and comorbidities\n</chart>",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 202,
     "source": "Synthetic NCCN-like Guideline (Image-derived Dummy)",
     "selected_corpora": 1,
     "text": "<chart>\nTREATMENT PATHWAY — MEDICALLY FIT PATIENTS\nHistology: Adenocarcinoma\nClinical Stage: Locoregional disease (non-metastatic)\n\n- Early-stage mucosal tumors may be considered for endoscopic reselected_corpora\n- Tumors with submucosal invasion or nodal involvement generally require multimodal therapy\n- Multidisciplinary evaluation is recommended prior to treatment initiation\nNotes: Recommendations assume adequate surgical fitness\n</chart>",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 203,
@@ -80,20 +80,20 @@
       ]
     ],
     "text": "<chart>\nSYSTEMIC THERAPY PRINCIPLES\n- Regimen selection should consider performance status and comorbidities\n- Two-drug chemotherapy combinations are generally preferred due to lower toxicity\n- Targeted or immune-based therapies may be considered based on biomarker status\n- Dose modifications may be required depending on tolerance\n</chart>",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 204,
     "source": "Synthetic Pathology Guidelines (Table-derived Dummy)",
     "selected_corpora": 0,
     "text": "PATHOLOGIC REVIEW — SYNTHETIC TABLE EXTRACTION\nThe following table was extracted from a guideline chart and converted into structured JSON format for downstream retrieval:\n\nTABLE_JSON:\n[\n  [\n    {\n      \"Specimen Type\": \"---\",\n      \"Reporting Requirements\": \"---\"\n    },\n    {\n      \"Specimen Type\": \"Biopsy\",\n      \"Reporting Requirements\": \"Include histologic tumor type, grade, presence of invasion, and assessment of Barrett-associated dysplasia. Universal testing for mismatch repair status is recommended in newly diagnosed cases.\"\n    },\n    {\n      \"Specimen Type\": \"Endoscopic reselected_corpora\",\n      \"Reporting Requirements\": \"Report depth of invasion, margin status, lymphovascular invasion, histologic grade, and tumor subtype. Molecular testing should be performed if not previously documented.\"\n    },\n    {\n      \"Specimen Type\": \"Esophagogastrectomy without prior chemoradiation\",\n      \"Reporting Requirements\": \"Include tumor location relative to the esophagogastric junction, nodal status, total lymph node count, and pathologic staging parameters.\"\n    },\n    {\n      \"Specimen Type\": \"Esophagogastrectomy with prior chemoradiation\",\n      \"Reporting Requirements\": \"Extensive sampling of the tumor bed is recommended, with documentation of treatment response and residual disease when present.\"\n    }\n  ]\n]\n\nNOTE: This table represents a synthetic, paraphrased approximation of guideline-based reporting elements.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   },
   {
     "chunk_id": 205,
     "source": "Synthetic Multidisciplinary Care Principles (Dummy)",
     "selected_corpora": 1,
     "text": "<chart>\nMULTIDISCIPLINARY MANAGEMENT\n- Treatment planning should occur within a multidisciplinary tumor board\n- Review of imaging, pathology, and clinical status is recommended prior to therapy\n- Consensus recommendations should be documented\n</chart>\n\nAdditional note:\nStructured tables extracted from guideline figures (e.g., pathology reporting requirements) were converted into JSON to support structured retrieval and reasoning.",
-    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388],
+    "embedding": [-0.013184410519897938, -0.011582023464143276, -0.03456711769104004, 0.0007163887494243681, 0.0012227098923176527, -0.0657486766576767, 0.04771913215517998, 0.021674400195479393, 0.031260158866643906, 0.008643860928714275, -0.003197403158992529, -0.05142500624060631, -0.007323801051825285, 0.015442297793924809, -0.045852914452552795, 0.015548673458397388]
   }
 ]

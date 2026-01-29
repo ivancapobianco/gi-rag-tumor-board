@@ -3,36 +3,36 @@
 This repository contains scripts and dummy dictionaries to extract content from PDF guidelines (S3 and NCCN) and convert them into structured JSON format. The workflow is designed to support downstream processing, corpora selection, and manual curation.
 
 
-
 ## Step 1: Prepare the Dummy Dictionary
 
 1. Open `data/dummy_corpora/guideline_dictionary_dummy.py`.
-2. Replace the `"PATH OF YOUR PDF"` placeholders with the correct **relative paths** to your PDF files in the `Documents/Guidelines_pdf/` or `Documents/Guidelines_NCCN_pdf/` folders.
+2. Replace the `"PATH OF YOUR PDF"` placeholders with the correct **relative paths** to your PDF files in the `data/dummy_corpora/guidelines` folder.
 3. Make sure each guideline has the correct `starting_page`, `final_cleaned_chunk` (for S3), `mark` (heading marker), and `images_to_save` (pages with images to skip).
 
 **Example:**
 
-```python
+'''python
 guidelines_dict = {
     'OE-CA': {
-        'path': "../Documents/Guidelines_pdf/LL_Ösophaguskarzinom_Kurzversion_3.1.pdf",
+        'path': "../data/dummy_corpora/guidelines/LL_Ösophaguskarzinom_Kurzversion_3.1.pdf",
         'starting_page': 21,
         'final_cleaned_chunk': "### 15 Tabellenverzeichnis",
         'mark': "### ",
         'images_to_save': [22, 29, 48],
     }
-}
+}'''
 
-Step 2: Place PDFs
+## Step 2: Place PDFs
 
-    S3 PDFs → Documents/Guidelines_pdf/
-
-    NCCN PDFs → Documents/Guidelines_NCCN_pdf/
+    PDFs → data/dummy_corpora/guidelines
 
     Ensure the paths in the dummy dictionary point to these files correctly.
 
-Step 3: Extract JSON from PDFs
-S3 Guidelines
+## Step 3: Extract JSON from PDFs
+
+### S3 Guidelines
+
+Given the structure of the German S3 Guidelines, we decided to create one chunk per chapters.
 
 python processing/extract_s3_guidelines_to_json.py
 
@@ -42,10 +42,12 @@ python processing/extract_s3_guidelines_to_json.py
 
     Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
-dummy_guidelines_OE_CA.json
-dummy_guidelines_Magen_CA.json
+dummy_S3_guidelines_OE_CA.json
+dummy_S3_guidelines_Magen_CA.json
 
-NCCN Guidelines
+### NCCN Guidelines
+
+Given the structure of the German S3 Guidelines, we decided to create one chunk per slide.
 
 python processing/extract_nccn_guidelines_to_json.py
 
@@ -53,8 +55,8 @@ python processing/extract_nccn_guidelines_to_json.py
 
     Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
-dummy_guidelines_OE_CA.json
-dummy_guidelines_Magen_CA.json
+dummy_NCCN_guidelines_OE_CA.json
+dummy_NCCN_guidelines_Magen_CA.json
 
 Step 4: Manual Curation
 

@@ -2,7 +2,6 @@
 
 This repository contains scripts and dummy dictionaries to extract content from PDF guidelines (S3 and NCCN) and convert them into structured JSON format. The workflow is designed to support downstream processing, corpora selection, and manual curation.
 
-
 ## Step 1: Prepare the Dummy Dictionary
 
 1. Open `data/dummy_corpora/guideline_dictionary_dummy.py`.

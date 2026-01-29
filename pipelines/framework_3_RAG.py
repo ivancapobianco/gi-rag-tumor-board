@@ -14,6 +14,7 @@ import os
 import sys
 import json
 import numpy as np
+from typing import List, Dict, Optional
 
 # ------------------------------------------------------------------
 # Path setup: allow imports from parallel folders
@@ -31,7 +32,7 @@ sys.path.append(processing_dir)
 # ------------------------------------------------------------------
 from prompt_templates import get_prompt_for_configuration
 from chatgpt import chatgpt_chat_completion
-from embedding import embed_text
+from embeddings import embed_text
 
 # -----------------------------
 # User configuration
@@ -72,7 +73,7 @@ def load_case_text(path: str) -> str:
         return f.read().strip()
 
 
-def load_guideline_corpora(path: str) -> list[dict]:
+def load_guideline_corpora(path: str) -> List[Dict]:
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
@@ -91,9 +92,9 @@ def cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
 
 def retrieve_top_k_chunks(
     query_embedding: np.ndarray,
-    corpora: list[dict],
+    corpora: Optional[List[Dict]],
     top_k: int = 5
-) -> list[dict]:
+) -> List[Dict]:
     """
     Retrieve top-k guideline chunks by cosine similarity to the query embedding.
     """

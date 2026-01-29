@@ -1,8 +1,8 @@
 """
 Run a CUSTOM RAG pipeline using:
-- On-the-fly embedding of the patient case
+- Embedding of the patient case
 - Precomputed dummy guideline embeddings (JSON)
-- Local similarity search (dot product)
+- Local similarity search
 - Prompt-based RAG inference via ChatCompletion
 
 IMPORTANT:
@@ -31,7 +31,7 @@ sys.path.append(processing_dir)
 # ------------------------------------------------------------------
 from prompts_templates import get_prompt_for_configuration
 from chatgpt import chatgpt_chat_completion
-from embedding import embed_text  # on-the-run embedding function
+from embedding import embed_text
 
 # ------------------------------------------------------------------
 # Configuration

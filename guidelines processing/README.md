@@ -81,9 +81,34 @@ After generating the JSON files, manual curation is required:
     
 - Selected Corpora:
     
-        Open the JSON files and set "selected_corpora": 1 for chunks that should be included in the curated corpus.
-    
+        Open the JSON files and set `"selected_corpora": 1` for chunks that should be included in the curated corpus.
+
         The default value is 0.
+    
+        **Practical Guidance:**
+        
+        1. **Full vs Curated Corpora**  
+           - Two parallel corpora are maintained:
+             1. **Full Corpus:** Contains the entire cleaned guideline text. Useful for comprehensive retrieval or reference.  
+             2. **Curated Tumor Board Corpus:** Optimized for clinical decision support during tumor board meetings. Focuses only on actionable and treatment-relevant content.
+    
+        2. **Curation Criteria for the Tumor Board Corpus**  
+           - Include chunks directly supporting treatment planning, staging decisions, surgical or systemic therapy strategies.  
+           - Exclude repetitive or non-actionable sections, such as:  
+             - Epidemiology or background statistics  
+             - Prevention strategies  
+             - General diagnostic criteria (unless they impact immediate therapeutic decisions)  
+    
+        3. **Inference Behavior**  
+           - During RAG retrieval, the system will retrieve up to **five most relevant chunks** per query.  
+           - Ensuring only actionable chunks are marked in the curated corpus reduces retrieval noise and improves relevance.
+    
+        **Summary Table:**
+    
+        | Corpus Type       | Contents                                                                                   | Selected Chunks (`selected_corpora = 1`) |
+        |------------------|-------------------------------------------------------------------------------------------|-----------------------------------------|
+        | Full Corpus       | Entire cleaned guideline text                                                              | Optional, for full reference            |
+        | Curated Corpus    | Tumor board–optimized, actionable content only                                           | Mandatory for optimized retrieval       |
     
 - Quality Check:
     

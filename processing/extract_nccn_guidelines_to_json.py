@@ -1,13 +1,18 @@
 import os
+import sys
 import json
 import pymupdf4llm
-from guidelines_dictionaries_dummy import guidelines_nccn_dict
+
+# Add the data folder to sys.path so we can import the dummy dictionary
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data')))
+from guideline_dictionary_dummy import guidelines_nccn_dict
 
 # Output folder for JSON files
 output_folder = os.path.abspath(os.path.join('..', 'data', 'dummy_corpora'))
 os.makedirs(output_folder, exist_ok=True)
 
 def remove_illegal_characters(text):
+    """Keep only printable characters plus newline, carriage return, and tab."""
     return ''.join(c for c in text if c.isprintable() or c in "\n\r\t")
 
 # Loop through NCCN dummy guidelines

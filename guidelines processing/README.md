@@ -91,6 +91,23 @@ After generating the JSON files, manual curation is required:
     
         Remove any irrelevant footer or page numbering text if present.
 
+
+Step 5: Generate Embeddings
+
+Once your curated JSON files are ready and cleaned:
+
+Run the embedding script to compute vector embeddings for each guideline chunk:
+```bash
+python processing/corpora_embeddings.py
+```
+- Input: curated JSON files in data/dummy_corpora/ (e.g., dummy_guidelines.json)
+- Output: JSON files with embeddings appended, e.g., dummy_guidelines_with_embeddings.json
+
+These embeddings are required for local similarity search in the RAG pipeline.
+
+Note: If you try to run the RAG pipeline without embeddings, you may get a dimension mismatch error. Always run this step first.
+
+
 ## Notes
 
 chunk_id is automatically assigned:
@@ -108,14 +125,12 @@ The scripts rely on pymupdf4llm to read PDFs and convert them into markdown-like
 
 
 
-
-
 # Workflow Summary
 
 1. Update the dummy dictionary with correct PDF paths and page info.
 2. Place PDFs in the corresponding folders.
 3. Run S3 and/or NCCN extraction scripts.
 4. Manually curate JSON outputs: update selected_corpora, rewrite images/tables, remove noise.
-5. Use curated JSON for downstream applications (e.g., corpora creation, NLP processing, etc.).
+5. Use curated JSON with embeddings for downstream applications (e.g., RAG pipeline, NLP processing, etc.).
 
 

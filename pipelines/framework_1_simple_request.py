@@ -82,4 +82,3 @@ print("=== Case Text ===")
 print(case_text)
 print("\n=== Simple Request Output ===")
 print(response)
-

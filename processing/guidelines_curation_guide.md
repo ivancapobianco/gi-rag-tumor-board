@@ -35,31 +35,26 @@ Ensure the paths in the dummy dictionary point to these files correctly.
 
 ### S3 Guidelines
 
-Given the structure of the German S3 Guidelines, we decided to create one chunk per chapters.
+Given the structure of the German S3 Guidelines, we decided to create one chunk per chapters (determined by the specified mark).
 
-python processing/extract_s3_guidelines_to_json.py
+Use python processing/extract_s3_guidelines_to_json.py
+- Extracts text starting from starting_page and splits chunks using the specified mark.
+- Uses final_cleaned_chunk to remove trailing sections (e.g., tables).
+- Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
-    Extracts text starting from starting_page and splits chunks using the specified mark.
-
-    Uses final_cleaned_chunk to remove trailing sections (e.g., tables).
-
-    Output JSON files are saved in data/dummy_corpora/ with filenames like:
-
-dummy_S3_guidelines_esophageal.json
-dummy_S3_guidelines_gastric.json
+    dummy_S3_guidelines_esophageal.json
+    dummy_S3_guidelines_gastric.json
 
 ### NCCN Guidelines
 
 Given the structure of the German S3 Guidelines, we decided to create one chunk per slide.
 
-python processing/extract_nccn_guidelines_to_json.py
+Use python processing/extract_nccn_guidelines_to_json.py
+- Creates one chunk per page between starting_page and final_page, skipping images_to_save pages.
+- Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
-    Creates one chunk per page between starting_page and final_page, skipping images_to_save pages.
-
-    Output JSON files are saved in data/dummy_corpora/ with filenames like:
-
-dummy_NCCN_guidelines_esophageal.json
-dummy_NCCN_guidelines_gastric.json
+    dummy_NCCN_guidelines_esophageal.json
+    dummy_NCCN_guidelines_gastric.json
 
 PS: PS: Honestly, this step could be replaced by a simple copy-paste of the PDFs. Not elegant, but it would achieve the same goal.
 

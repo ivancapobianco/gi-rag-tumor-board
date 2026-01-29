@@ -133,13 +133,11 @@ if __name__ == "__main__":
             rewrite_available = False
 
         if rewrite_available:
-            case_text = rewrite_case_from_txt(
-                CASE_PATH,
-                model=MODEL_NAME
-            )
+            case_text = rewrite_case_from_txt(CASE_PATH)
             print("=== Using rewritten case ===\n")
         else:
             print("Rewrite function not found. Using original case.\n")
+
 
     # Step 2: Embed patient case
     query_embedding = np.array(embed_text(case_text), dtype=float)

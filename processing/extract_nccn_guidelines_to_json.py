@@ -20,7 +20,7 @@ for guideline_name, info in guidelines_nccn_dict.items():
     print(f"Processing NCCN guideline: {guideline_name}")
 
     pdf_path = info['path']
-    source_name = f"Synthetic NCCN-like Guideline (Dummy)"
+    source_name = f"Synthetic NCCN-like Guideline {guideline_name} (Dummy)"
 
     # Load PDF as markdown docs
     reader = pymupdf4llm.LlamaMarkdownReader()

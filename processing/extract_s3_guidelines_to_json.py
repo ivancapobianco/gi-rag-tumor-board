@@ -1,8 +1,12 @@
 import os
+import sys
 import json
 import pandas as pd
 import pymupdf4llm
-from guidelines_dictionaries_dummy import guidelines_dict
+
+# Add the data folder to sys.path so we can import the dummy dictionary
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data')))
+from guideline_dictionary_dummy import guidelines_dict
 
 # Output folder for JSON files
 output_folder = os.path.abspath(os.path.join('..', 'data', 'dummy_corpora'))

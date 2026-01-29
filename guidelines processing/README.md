@@ -81,9 +81,9 @@ After generating the JSON files, manual curation is required:
     
 - Selected Corpora:
     
- Open the JSON files and set `"selected_corpora": 1` for chunks that should be included in the curated corpus.
+    Open the JSON files and set `"selected_corpora": 1` for chunks that should be included in the curated corpus.
 
-The default value is 0.
+    The default value is 0.
 
     **Practical Guidance:**
     

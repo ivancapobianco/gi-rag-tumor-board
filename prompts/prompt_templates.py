@@ -18,7 +18,7 @@ from typing import List, Dict, Optional
 
 REWRITING_PROMPT = """I would like to use the following clinical case in a Retrieval-Augmented Generation (RAG) workflow, referencing oncological guidelines to determine the next therapeutic step.
 
-Please rewrite the case in a concise and standardized format, using clinical terminology and structure typically found in oncology guidelines.
+Please rewrite the case in english in a concise and standardized format, using clinical terminology and structure typically found in oncology guidelines.
 
 Return only the reformulated case, without additional commentary.
 

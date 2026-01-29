@@ -51,20 +51,17 @@
     "chunk_id": 201,
     "source": "Synthetic NCCN-like Guideline (Image-derived Dummy)",
     "selected_corpora": 1,
-    "origin": "chart_image_to_text",
     "text": "<chart>\nWORKUP FOR SUSPECTED ESOPHAGEAL OR EGJ CANCER\n1. Clinical history and physical examination\n2. Upper gastrointestinal endoscopy with biopsy\n3. Cross-selected_corporaal imaging of chest and abdomen with contrast\n4. FDG-PET/CT if no distant metastatic disease is identified\n5. Endoscopic ultrasound for local staging when feasible\n6. Nutritional assessment and counseling\n7. Assessment of performance status and comorbidities\n</chart>",    
   },
   {
     "chunk_id": 202,
     "source": "Synthetic NCCN-like Guideline (Image-derived Dummy)",
-    "origin": "chart_image_to_text",
     "text": "<chart>\nTREATMENT PATHWAY — MEDICALLY FIT PATIENTS\nHistology: Adenocarcinoma\nClinical Stage: Locoregional disease (non-metastatic)\n\n- Early-stage mucosal tumors may be considered for endoscopic reselected_corpora\n- Tumors with submucosal invasion or nodal involvement generally require multimodal therapy\n- Multidisciplinary evaluation is recommended prior to treatment initiation\nNotes: Recommendations assume adequate surgical fitness\n</chart>",    
   },
   {
     "chunk_id": 203,
     "source": "Synthetic NCCN-like Guideline (Image-derived Dummy)",
     "selected_corpora": 1,
-    "origin": "chart_image_to_text",
     "table_json": [
       [
         {"Specimen Type": "---", "Reporting Requirements": "---"},
@@ -77,14 +74,12 @@
     "chunk_id": 204,
     "source": "Synthetic Pathology Guidelines (Table-derived Dummy)",
     "selected_corpora": 1,
-    "origin": "chart_table_to_json",
     "text": "PATHOLOGIC REVIEW — SYNTHETIC TABLE EXTRACTION\nThe following table was extracted from a guideline chart and converted into structured JSON format for downstream retrieval:\n\nTABLE_JSON:\n[\n  [\n    {\n      \"Specimen Type\": \"---\",\n      \"Reporting Requirements\": \"---\"\n    },\n    {\n      \"Specimen Type\": \"Biopsy\",\n      \"Reporting Requirements\": \"Include histologic tumor type, grade, presence of invasion, and assessment of Barrett-associated dysplasia. Universal testing for mismatch repair status is recommended in newly diagnosed cases.\"\n    },\n    {\n      \"Specimen Type\": \"Endoscopic reselected_corpora\",\n      \"Reporting Requirements\": \"Report depth of invasion, margin status, lymphovascular invasion, histologic grade, and tumor subtype. Molecular testing should be performed if not previously documented.\"\n    },\n    {\n      \"Specimen Type\": \"Esophagogastrectomy without prior chemoradiation\",\n      \"Reporting Requirements\": \"Include tumor location relative to the esophagogastric junction, nodal status, total lymph node count, and pathologic staging parameters.\"\n    },\n    {\n      \"Specimen Type\": \"Esophagogastrectomy with prior chemoradiation\",\n      \"Reporting Requirements\": \"Extensive sampling of the tumor bed is recommended, with documentation of treatment response and residual disease when present.\"\n    }\n  ]\n]\n\nNOTE: This table represents a synthetic, paraphrased approximation of guideline-based reporting elements.",    
   },
   {
     "chunk_id": 205,
     "source": "Synthetic Multidisciplinary Care Principles (Dummy)",
     "selected_corpora": 1,
-    "origin": "chart_image_to_text",
     "text": "<chart>\nMULTIDISCIPLINARY MANAGEMENT\n- Treatment planning should occur within a multidisciplinary tumor board\n- Review of imaging, pathology, and clinical status is recommended prior to therapy\n- Consensus recommendations should be documented\n</chart>\n\nAdditional note:\nStructured tables extracted from guideline figures (e.g., pathology reporting requirements) were converted into JSON to support structured retrieval and reasoning.",    
   }
 ]

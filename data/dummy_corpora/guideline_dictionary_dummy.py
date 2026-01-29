@@ -1,4 +1,5 @@
 # Minimal dummy dictionary for S3 and NCCN guidelines
+# !!! Please use only the keys esophageal, gastric, hepatic, pancreas, or colorectal for the pipelines to function correctly. !!!
 
 guidelines_dict = {
     'esophageal': {

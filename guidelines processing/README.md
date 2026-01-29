@@ -117,7 +117,7 @@ After generating the JSON files, manual curation is required:
      Remove any irrelevant footer or page numbering text if present.
 
 
-Step 5: Generate Embeddings
+## Step 5: Generate Embeddings
 
 Once your curated JSON files are ready and cleaned:
 

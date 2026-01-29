@@ -35,7 +35,7 @@ Ensure the paths in the dummy dictionary point to these files correctly.
 
 Given the structure of the German S3 Guidelines, we decided to create one chunk per chapters (determined by the specified mark).
 
-Use
+Use:
 ```bash
 pyton processing/extract_s3_guidelines_to_json.py
 ```
@@ -53,7 +53,11 @@ pyton processing/extract_s3_guidelines_to_json.py
 
 Given the structure of the German S3 Guidelines, we decided to create one chunk per slide.
 
-Use python processing/extract_nccn_guidelines_to_json.py
+Use:
+```bash
+python processing/extract_nccn_guidelines_to_json.py
+```
+
 - Creates one chunk per page between starting_page and final_page, skipping images_to_save pages.
 - Output JSON files are saved in data/dummy_corpora/ with filenames like:
 

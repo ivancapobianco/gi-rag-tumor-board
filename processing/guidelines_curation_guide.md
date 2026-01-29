@@ -20,7 +20,7 @@ guidelines_dict = {
         'mark': "### ",
         'images_to_save': [22, 29, 48],
     }
-} ```` ``` 
+} ````
 
 
 ## Step 2: Place PDFs

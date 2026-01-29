@@ -27,9 +27,9 @@ guidelines_dict = {
 
 ## Step 2: Place PDFs
 
-    PDFs → data/dummy_corpora/guidelines
+PDFs → data/dummy_corpora/guidelines
 
-    Ensure the paths in the dummy dictionary point to these files correctly.
+Ensure the paths in the dummy dictionary point to these files correctly.
 
 ## Step 3: Extract JSON from PDFs
 

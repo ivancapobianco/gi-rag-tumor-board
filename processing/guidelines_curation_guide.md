@@ -58,35 +58,38 @@ python processing/extract_nccn_guidelines_to_json.py
 dummy_NCCN_guidelines_esophageal.json
 dummy_NCCN_guidelines_gastric.json
 
-Step 4: Manual Curation
+PS: PS: Honestly, this step could be replaced by a simple copy-paste of the PDFs. Not elegant, but it would achieve the same goal.
+
+
+## Step 4: Manual Curation
 
 After generating the JSON files, manual curation is required:
 
     Images and Tables:
-
-        Extracted image/text combinations should be checked and rewritten if necessary.
-
-        Ensure tables from figures are correctly represented in JSON.
-
+    
+        Images should be rewritten in plain text. We usually enclose them in the tag <chart>image description</chart>.
+    
+        For the paper we convert every markdown table to a written JSON format. If this is absolutely necessary, it is to be questioned.
+    
     Selected Corpora:
-
+    
         Open the JSON files and set "selected_corpora": 1 for chunks that should be included in the curated corpus.
-
-        Default value is 0.
-
+    
+        The default value is 0.
+    
     Quality Check:
-
+    
         Ensure text chunks are readable and headings are preserved where relevant.
-
+    
         Remove any irrelevant footer or page numbering text if present.
 
-Notes
+## Notes
 
     chunk_id is automatically assigned:
 
         S3 guidelines → start at 101
 
-        NCCN guidelines → start at 201
+        NCCN guidelines → start at 501
 
     Ensure all paths in the dictionary are relative to the repository root.
 
@@ -94,17 +97,11 @@ Notes
 
     The scripts rely on pymupdf4llm to read PDFs and convert them into markdown-like text.
 
-Requirements
 
-    Python 3.9+
 
-    Packages: pymupdf4llm, pandas (optional for S3 chunk processing), json
 
-    Install dependencies via pip:
 
-pip install pandas pymupdf4llm
-
-Workflow Summary
+# Workflow Summary
 
     Update the dummy dictionary with correct PDF paths and page info.
 
@@ -117,9 +114,3 @@ Workflow Summary
     Use curated JSON for downstream applications (e.g., corpora creation, NLP processing, etc.).
 
 
----
-
-I can also make a **shorter, “quick start” version** if you want something even more compact for team members.  
-
-Do you want me to do that next?
-::contentReference[oaicite:0]{index=0}

@@ -42,8 +42,8 @@ python processing/extract_s3_guidelines_to_json.py
 
     Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
-dummy_S3_guidelines_OE_CA.json
-dummy_S3_guidelines_Magen_CA.json
+dummy_S3_guidelines_esophageal.json
+dummy_S3_guidelines_gastric.json
 
 ### NCCN Guidelines
 
@@ -55,8 +55,8 @@ python processing/extract_nccn_guidelines_to_json.py
 
     Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
-dummy_NCCN_guidelines_OE_CA.json
-dummy_NCCN_guidelines_Magen_CA.json
+dummy_NCCN_guidelines_esophageal.json
+dummy_NCCN_guidelines_gastric.json
 
 Step 4: Manual Curation
 

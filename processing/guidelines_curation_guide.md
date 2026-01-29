@@ -11,7 +11,7 @@ This repository contains scripts and dummy dictionaries to extract content from 
 
 **Example:**
 
-'''python
+```python
 guidelines_dict = {
     'OE-CA': {
         'path': "../data/dummy_corpora/guidelines/LL_Ösophaguskarzinom_Kurzversion_3.1.pdf",
@@ -20,7 +20,8 @@ guidelines_dict = {
         'mark': "### ",
         'images_to_save': [22, 29, 48],
     }
-}'''
+}
+
 
 ## Step 2: Place PDFs
 

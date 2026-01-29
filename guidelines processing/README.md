@@ -90,7 +90,7 @@ After generating the JSON files, manual curation is required:
     1. **Full vs Curated Corpora**  
        - Two parallel corpora are maintained:
          1. **Full Corpus:** Contains the entire cleaned guideline text. Useful for comprehensive retrieval or reference.  
-         2. **Curated Tumor Board Corpus:** Optimized for clinical decision support during tumor board meetings. Focuses only on actionable and treatment-relevant content.
+         2. **Curated Corpus:** Optimized for clinical decision support during tumor board meetings. Focuses only on actionable and treatment-relevant content.
 
     2. **Curation Criteria for the Tumor Board Corpus**  
        - Include chunks directly supporting treatment planning, staging decisions, surgical or systemic therapy strategies.  

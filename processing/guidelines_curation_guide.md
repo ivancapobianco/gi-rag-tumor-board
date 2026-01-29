@@ -42,8 +42,10 @@ Use python processing/extract_s3_guidelines_to_json.py
 - Uses final_cleaned_chunk to remove trailing sections (e.g., tables).
 - Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
+```text
     dummy_S3_guidelines_esophageal.json
     dummy_S3_guidelines_gastric.json
+```
 
 ### NCCN Guidelines
 
@@ -53,8 +55,10 @@ Use python processing/extract_nccn_guidelines_to_json.py
 - Creates one chunk per page between starting_page and final_page, skipping images_to_save pages.
 - Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
+```text
     dummy_NCCN_guidelines_esophageal.json
     dummy_NCCN_guidelines_gastric.json
+```
 
 PS: PS: Honestly, this step could be replaced by a simple copy-paste of the PDFs. Not elegant, but it would achieve the same goal.
 

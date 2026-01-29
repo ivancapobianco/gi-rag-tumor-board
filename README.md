@@ -9,7 +9,7 @@ in Gastrointestinal Oncology" (npj Digital Medicine).
 ## Purpose
 
 The repository provides full transparency of the methodological framework,
-prompting strategies, retrieval logic, and evaluation pipelines used in the study.
+prompting strategies, and retrieval logic pipelines used in the study.
 
 Due to patient privacy regulations and copyright restrictions,
 no real patient data or guideline documents are included.
@@ -18,7 +18,7 @@ no real patient data or guideline documents are included.
 
 - Prompt templates and examples for all experimental configurations
 - Retrieval and RAG orchestration logic
-- Evaluation scripts (concordance, Jaccard similarity)
+- Guidelines processing logic
 - Dummy patient cases and synthetic guideline corpora
 - Configuration matrix for the 16 experimental setups
 
@@ -30,8 +30,8 @@ no real patient data or guideline documents are included.
 
 ## Reproducibility
 
-The repository enables methodological replication of the study design,
-prompt engineering strategies, and evaluation framework.
+The repository enables methodological replication of the study design and
+prompt engineering strategies.
 Synthetic data are provided to demonstrate end-to-end execution.
 
 ## Disclaimer

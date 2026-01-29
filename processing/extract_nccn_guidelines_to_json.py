@@ -34,7 +34,7 @@ for guideline_name, info in guidelines_nccn_dict.items():
 
     # Convert to JSON dicts
     json_data = []
-    chunk_id_base = 200  # Start numbering for NCCN differently
+    chunk_id_base = 500  # Start numbering for NCCN differently
     for i, doc in enumerate(filtered_docs):
         json_data.append({
             "chunk_id": chunk_id_base + i + 1,

@@ -10,6 +10,7 @@ This module contains the four main prompt templates used in the study:
 No patient data or guideline content is included.
 """
 
+from typing import List, Dict, Optional
 
 # =============================================================================
 # PROMPT TYPE 1: REWRITING PROMPT
@@ -76,7 +77,7 @@ Formulate a concise German recommendation in 1–2 sentences, starting with 'Das
 # HELPER FUNCTIONS
 # =============================================================================
 
-def format_retrieved_context(chunks: list[dict]) -> str:
+def format_retrieved_context(chunks: List[Dict]) -> str:
     """
     Format retrieved guideline chunks into context string.
     
@@ -105,7 +106,7 @@ def format_retrieved_context(chunks: list[dict]) -> str:
 def get_prompt_for_configuration(
     case_text: str,
     config_type: str,
-    retrieved_chunks: list[dict] = None
+    retrieved_chunks: Optional[List[Dict]] = None
 ) -> str:
     """
     Get the appropriate prompt based on configuration type.
@@ -148,31 +149,32 @@ def get_prompt_for_configuration(
 # EXAMPLE USAGE
 # =============================================================================
 
-if __name__ == "__main__":
-    # Example case (simplified)
-    case = """64-year-old male with esophageal adenocarcinoma, cT3 cN1 M0. 
-    Completed neoadjuvant chemoradiotherapy 6 weeks ago. 
-    Restaging shows partial response. What is the next step?"""
-    
-    # Example 1: Simple request
-    print("=== SIMPLE REQUEST ===")
-    prompt = get_prompt_for_configuration(case, 'simple')
-    print(prompt)
-    print()
-    
-    # Example 2: RAG with retrieved chunks
-    print("=== CUSTOM RAG ===")
-    chunks = [
-        {
-            'chunk_id': 153,
-            'source': 'NCCN Guidelines',
-            'text': 'Patients with locally advanced esophageal adenocarcinoma should receive neoadjuvant chemoradiotherapy followed by surgery...'
-        },
-        {
-            'chunk_id': 42,
-            'source': 'German S3 Guideline',
-            'text': 'Surgical resection should be performed 4-8 weeks after completion of neoadjuvant therapy...'
-        }
-    ]
-    prompt = get_prompt_for_configuration(case, 'rag_full', chunks)
-    print(prompt)
+# if __name__ == "__main__":
+#     # Example case (simplified)
+#     case = """64-year-old male with esophageal adenocarcinoma, cT3 cN1 M0. 
+#     Completed neoadjuvant chemoradiotherapy 6 weeks ago. 
+#     Restaging shows partial response. What is the next step?"""
+#     
+#     # Example 1: Simple request
+#     print("=== SIMPLE REQUEST ===")
+#     prompt = get_prompt_for_configuration(case, 'simple')
+#     print(prompt)
+#     print()
+#     
+#     
+#     # Example 2: RAG with retrieved chunks
+#     print("=== CUSTOM RAG ===")
+#     chunks = [
+#         {
+#             'chunk_id': 153,
+#             'source': 'NCCN Guidelines',
+#             'text': 'Patients with locally advanced esophageal adenocarcinoma should receive neoadjuvant chemoradiotherapy followed by surgery...'
+#         },
+#         {
+#             'chunk_id': 42,
+#             'source': 'German S3 Guideline',
+#             'text': 'Surgical resection should be performed 4-8 weeks after completion of neoadjuvant therapy...'
+#         }
+#     ]
+#     prompt = get_prompt_for_configuration(case, 'rag_full', chunks)
+#     print(prompt)

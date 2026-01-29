@@ -20,7 +20,7 @@ sys.path.append(prompts_dir)
 # -----------------------------
 # Import the prompt template and chat function
 # -----------------------------
-from prompts_templates import REWRITING_PROMPT
+from prompt_templates import REWRITING_PROMPT
 from chatgpt import chatgpt_chat_completion
 
 

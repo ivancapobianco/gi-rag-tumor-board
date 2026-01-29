@@ -87,17 +87,18 @@ After generating the JSON files, manual curation is required:
 
 ## Notes
 
-    chunk_id is automatically assigned:
+chunk_id is automatically assigned:
 
+```text
         S3 guidelines → start at 101
-
         NCCN guidelines → start at 501
+```
 
-    Ensure all paths in the dictionary are relative to the repository root.
+Ensure all paths in the dictionary are relative to the repository root.
 
-    The mark variable is essential for S3 guidelines; NCCN guidelines usually work per-page without headings.
+The mark variable is essential for S3 guidelines; NCCN guidelines usually work per-page without headings.
 
-    The scripts rely on pymupdf4llm to read PDFs and convert them into markdown-like text.
+The scripts rely on pymupdf4llm to read PDFs and convert them into markdown-like text.
 
 
 
@@ -105,14 +106,10 @@ After generating the JSON files, manual curation is required:
 
 # Workflow Summary
 
-    Update the dummy dictionary with correct PDF paths and page info.
-
-    Place PDFs in the corresponding folders.
-
-    Run S3 and/or NCCN extraction scripts.
-
-    Manually curate JSON outputs: update selected_corpora, rewrite images/tables, remove noise.
-
-    Use curated JSON for downstream applications (e.g., corpora creation, NLP processing, etc.).
+1. Update the dummy dictionary with correct PDF paths and page info.
+2. Place PDFs in the corresponding folders.
+3. Run S3 and/or NCCN extraction scripts.
+4. Manually curate JSON outputs: update selected_corpora, rewrite images/tables, remove noise.
+5. Use curated JSON for downstream applications (e.g., corpora creation, NLP processing, etc.).
 
 

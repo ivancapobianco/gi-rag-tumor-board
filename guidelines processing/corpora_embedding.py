@@ -41,9 +41,16 @@ def save_corpora(corpora, output_path):
 # 5. Main
 # -------------------------------
 if __name__ == "__main__":
-    input_file = "./data/dummy_guidelines.json"
-    output_file = "./data/dummy_guidelines_with_embeddings.json"
+    current_dir = os.path.dirname(os.path.abspath(__file__))
 
-    corpora = load_corpora(input_file)
+    INPUT_FILE = os.path.abspath(
+        os.path.join(current_dir, '..', 'data', 'dummy_corpora', 'dummy_guidelines.json')
+    )
+
+    OUTPUT_FILE = os.path.abspath(
+        os.path.join(current_dir, '..', 'data', 'dummy_corpora', 'dummy_guidelines_with_embeddings.json')
+    )
+
+    corpora = load_corpora(INPUT_FILE)
     corpora_with_embeddings = embed_corpora(corpora)
-    save_corpora(corpora_with_embeddings, output_file)
+    save_corpora(corpora_with_embeddings, OUTPUT_FILE)

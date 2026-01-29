@@ -22,7 +22,7 @@ sys.path.append(prompts_dir)
 # -----------------------------
 # Imports
 # -----------------------------
-from prompts_templates import get_prompt_for_configuration
+from prompt_templates import get_prompt_for_configuration
 from chatgpt import chatgpt_assistant
 
 # -----------------------------

@@ -1,10 +1,15 @@
 import os
 import sys
 import json
+import pymupdf
 import pymupdf4llm
 
-# Add the data folder to sys.path so we can import the dummy dictionary
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data')))
+
+# Add the dummy_corpora folder to sys.path so we can import the dummy dictionary
+current_dir = os.path.dirname(os.path.abspath(__file__))
+dummy_corpora_dir = os.path.abspath(os.path.join(current_dir, '..', 'data', 'dummy_corpora'))
+sys.path.append(dummy_corpora_dir)
+
 from guideline_dictionary_dummy import guidelines_nccn_dict
 
 # Output folder for JSON files
@@ -19,12 +24,18 @@ def remove_illegal_characters(text):
 for guideline_name, info in guidelines_nccn_dict.items():
     print(f"Processing NCCN guideline: {guideline_name}")
 
-    pdf_path = info['path']
+    pdf_path = os.path.abspath(os.path.join(current_dir, '..', 'data', 'dummy_corpora', info['path']))
     source_name = f"Synthetic {guideline_name} NCCN-like Guideline (Dummy)"
 
     # Load PDF as markdown docs
     reader = pymupdf4llm.LlamaMarkdownReader()
-    docs = reader.load_data(pdf_path)
+    try:
+        docs = reader.load_data(pdf_path)
+    except (FileNotFoundError, pymupdf.FileNotFoundError):
+        print(f"\nERROR: PDF file not found: {pdf_path}")
+        print("Please check that you inserted the correct path and filename in 'guideline_dictionary_dummy.py'.")
+        print("Make sure the PDF exists in the folder 'data/dummy_corpora/guidelines'.\n")
+        sys.exit(1)
 
     # Filter pages according to starting_page / final_page and skip images
     filtered_docs = [doc for i, doc in enumerate(docs)

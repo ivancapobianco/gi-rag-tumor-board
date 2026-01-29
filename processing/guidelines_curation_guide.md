@@ -7,7 +7,8 @@ This repository contains scripts and dummy dictionaries to extract content from 
 
 1. Open `data/dummy_corpora/guideline_dictionary_dummy.py`.
 2. Replace the `"PATH OF YOUR PDF"` placeholders with the correct **relative paths** to your PDF files in the `data/dummy_corpora/guidelines` folder.
-3. Make sure each guideline has the correct `starting_page`, `final_cleaned_chunk` (for S3), `mark` (heading marker), and `images_to_save` (pages with images to skip).
+3. Make sure each guideline has the correct `starting_page`, `final_cleaned_chunk` (for S3), `mark` (heading marker, for S3), and `images_to_save` (pages with images to skip).
+
 
 **Example:**
 

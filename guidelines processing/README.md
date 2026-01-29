@@ -73,13 +73,13 @@ PS: PS: Honestly, this step could be replaced by a simple copy-paste of the PDFs
 
 After generating the JSON files, manual curation is required:
 
-- Images and Tables:
+- ### Images and Tables:
     
-        Images should be rewritten in plain text. We usually enclose them in the tag <chart>image description</chart>.
+    Images should be rewritten in plain text. We usually enclose them in the tag <chart>image description</chart>.
     
-        For the paper we convert every markdown table to a written JSON format. If this is absolutely necessary, it is to be questioned.
+    For the paper we convert every markdown table to a written JSON format. If this is absolutely necessary, it is to be questioned.
     
-- Selected Corpora:
+- ### Selected Corpora:
     
     Open the JSON files and set `"selected_corpora": 1` for chunks that should be included in the curated corpus.
 
@@ -110,11 +110,11 @@ After generating the JSON files, manual curation is required:
     | Full Corpus       | Entire cleaned guideline text                                                              | Optional, for full reference            |
     | Curated Corpus    | Tumor board–optimized, actionable content only                                           | Mandatory for optimized retrieval       |
     
-- Quality Check:
+- ### Quality Check:
     
-        Ensure text chunks are readable and headings are preserved where relevant.
+     Ensure text chunks are readable and headings are preserved where relevant.
     
-        Remove any irrelevant footer or page numbering text if present.
+     Remove any irrelevant footer or page numbering text if present.
 
 
 Step 5: Generate Embeddings

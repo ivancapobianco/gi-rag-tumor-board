@@ -41,8 +41,15 @@ print("1) gpt-4o-mini")
 print("2) gpt-4o")
 model_choice = input("Enter choice [1 or 2]: ").strip()
 MODEL_NAME = "gpt-4o-mini" if model_choice == "1" else "gpt-4o"
+print()
 
+# Ask whether to use rewritten text
 use_rewritten = input("Use rewritten case? (y/n): ").strip().lower() == "y"
+print()
+
+# Ask whether to use only selected corpora chunks
+use_selected_corpora = input("Use only selected corpora chunks? (y/n): ").strip().lower() == "y"
+print()
 
 # ------------------------------------------------------------------
 # Configuration
@@ -139,6 +146,11 @@ if __name__ == "__main__":
     # Step 3: Load corpora
     corpora = load_guideline_corpora(CORPORA_PATH)
 
+    # Step 3b: Optionally filter corpora by selected_corpora
+    if use_selected_corpora:
+        corpora = [chunk for chunk in corpora if chunk.get("selected_corpora", 0) == 1]
+        print(f"Using only selected corpora chunks: {len(corpora)} chunks available")
+    
     # Step 4: Retrieve top-k
     retrieved_chunks = retrieve_top_k_chunks(
         query_embedding=query_embedding,

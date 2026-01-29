@@ -33,10 +33,20 @@ from prompts_templates import get_prompt_for_configuration
 from chatgpt import chatgpt_chat_completion
 from embedding import embed_text
 
+# -----------------------------
+# User configuration
+# -----------------------------
+print("Select model (1 or 2):")
+print("1) gpt-4o-mini")
+print("2) gpt-4o")
+model_choice = input("Enter choice [1 or 2]: ").strip()
+MODEL_NAME = "gpt-4o-mini" if model_choice == "1" else "gpt-4o"
+
+use_rewritten = input("Use rewritten case? (y/n): ").strip().lower() == "y"
+
 # ------------------------------------------------------------------
 # Configuration
 # ------------------------------------------------------------------
-MODEL_NAME = "gpt-4o-mini"
 TOP_K = 5
 
 CASE_PATH = os.path.abspath(
@@ -51,19 +61,16 @@ CORPORA_PATH = os.path.abspath(
 # Helper functions
 # ------------------------------------------------------------------
 def load_case_text(path: str) -> str:
-    """Load patient case text from file."""
     with open(path, 'r', encoding='utf-8') as f:
         return f.read().strip()
 
 
 def load_guideline_corpora(path: str) -> list[dict]:
-    """Load guideline chunks with embeddings from JSON."""
     with open(path, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
 def dot_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
-    """Compute dot product similarity between two vectors."""
     return float(np.dot(vec1, vec2))
 
 
@@ -72,9 +79,7 @@ def retrieve_top_k_chunks(
     corpora: list[dict],
     top_k: int = 5
 ) -> list[dict]:
-    """
-    Retrieve top-k guideline chunks by embedding similarity.
-    """
+
     scored_chunks = []
 
     for chunk in corpora:
@@ -98,47 +103,50 @@ if __name__ == "__main__":
 
     print("Running local RAG pipeline with dummy guideline embeddings\n")
 
-    # --------------------------------------------------------------
     # Step 1: Load patient case
-    # --------------------------------------------------------------
     case_text = load_case_text(CASE_PATH)
 
-    # --------------------------------------------------------------
-    # Step 2: Embed patient case (on the run)
-    # --------------------------------------------------------------
+    # Optional rewriting
+    if use_rewritten:
+        try:
+            from rewrite import rewrite_case_from_txt
+            rewrite_available = True
+        except ImportError:
+            rewrite_available = False
+
+        if rewrite_available:
+            case_text = rewrite_case_from_txt(
+                CASE_PATH,
+                model=MODEL_NAME
+            )
+            print("=== Using rewritten case ===\n")
+        else:
+            print("Rewrite function not found. Using original case.\n")
+
+    # Step 2: Embed patient case
     query_embedding = np.array(embed_text(case_text), dtype=float)
 
-    # --------------------------------------------------------------
-    # Step 3: Load guideline corpora with embeddings
-    # --------------------------------------------------------------
+    # Step 3: Load corpora
     corpora = load_guideline_corpora(CORPORA_PATH)
 
-    # --------------------------------------------------------------
-    # Step 4: Retrieve top-k guideline chunks
-    # --------------------------------------------------------------
+    # Step 4: Retrieve top-k
     retrieved_chunks = retrieve_top_k_chunks(
         query_embedding=query_embedding,
         corpora=corpora,
         top_k=TOP_K
     )
 
-    # --------------------------------------------------------------
     # Step 5: Build RAG prompt
-    # --------------------------------------------------------------
     prompt = get_prompt_for_configuration(
         case_text=case_text,
         config_type="rag_full",
         retrieved_chunks=retrieved_chunks
     )
 
-    # --------------------------------------------------------------
-    # Step 6: Run ChatCompletion
-    # --------------------------------------------------------------
+    # Step 6: Run model
     response = chatgpt_chat_completion(prompt, model=MODEL_NAME)
 
-    # --------------------------------------------------------------
     # Output
-    # --------------------------------------------------------------
     print("=== Patient Case ===")
     print(case_text)
 
@@ -148,4 +156,3 @@ if __name__ == "__main__":
 
     print("\n=== RAG Output ===")
     print(response)
-

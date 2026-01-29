@@ -2,23 +2,7 @@
 
 This repository contains scripts and dummy dictionaries to extract content from PDF guidelines (S3 and NCCN) and convert them into structured JSON format. The workflow is designed to support downstream processing, corpora selection, and manual curation.
 
----
 
-## Folder Structure
-
-gi-rag-tumor-board/
-├── data/
-│ └── dummy_corpora/
-│ └── guideline_dictionary_dummy.py # Minimal dummy dictionary
-├── processing/
-│ ├── extract_s3_guidelines_to_json.py # S3 PDF extraction
-│ └── extract_nccn_guidelines_to_json.py # NCCN PDF extraction
-├── Documents/
-│ ├── Guidelines_pdf/ # Place your S3 PDFs here
-│ └── Guidelines_NCCN_pdf/ # Place your NCCN PDFs here
-
-
----
 
 ## Step 1: Prepare the Dummy Dictionary
 

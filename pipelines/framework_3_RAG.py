@@ -70,8 +70,16 @@ def load_guideline_corpora(path: str) -> list[dict]:
         return json.load(f)
 
 
-def dot_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
-    return float(np.dot(vec1, vec2))
+def cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
+    """
+    Compute cosine similarity between two vectors.
+    Returns a float in [-1, 1].
+    """
+    norm1 = np.linalg.norm(vec1)
+    norm2 = np.linalg.norm(vec2)
+    if norm1 == 0 or norm2 == 0:
+        return 0.0
+    return float(np.dot(vec1, vec2) / (norm1 * norm2))
 
 
 def retrieve_top_k_chunks(
@@ -79,12 +87,14 @@ def retrieve_top_k_chunks(
     corpora: list[dict],
     top_k: int = 5
 ) -> list[dict]:
-
+    """
+    Retrieve top-k guideline chunks by cosine similarity to the query embedding.
+    """
     scored_chunks = []
 
     for chunk in corpora:
         chunk_embedding = np.array(chunk["embedding"], dtype=float)
-        score = dot_similarity(chunk_embedding, query_embedding)
+        score = cosine_similarity(query_embedding, chunk_embedding)
 
         scored_chunks.append({
             "chunk_id": chunk.get("chunk_id"),

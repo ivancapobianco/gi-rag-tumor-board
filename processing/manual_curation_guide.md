@@ -1,116 +1,139 @@
-# Manual Corpus Curation Guide
+# Dummy Guidelines PDF Extraction and JSON Generation
 
-This document describes the manual curation steps applied to create the **Selected (Curated) Corpus** from the **Full Corpus**.
+This repository contains scripts and dummy dictionaries to extract content from PDF guidelines (S3 and NCCN) and convert them into structured JSON format. The workflow is designed to support downstream processing, corpora selection, and manual curation.
 
-## Overview
+---
 
-After automated PDF extraction and chunking, we manually reviewed all guideline chunks to exclude content not relevant for treatment decision-making. This reduced retrieval noise and improved RAG performance.
+## Folder Structure
 
-## Curation Criteria
+gi-rag-tumor-board/
+├── data/
+│ └── dummy_corpora/
+│ └── guideline_dictionary_dummy.py # Minimal dummy dictionary
+├── processing/
+│ ├── extract_s3_guidelines_to_json.py # S3 PDF extraction
+│ └── extract_nccn_guidelines_to_json.py # NCCN PDF extraction
+├── Documents/
+│ ├── Guidelines_pdf/ # Place your S3 PDFs here
+│ └── Guidelines_NCCN_pdf/ # Place your NCCN PDFs here
 
-### ✅ INCLUDED Sections (Treatment-Relevant)
 
-- **Treatment algorithms and decision trees**
-- **Therapy recommendations** (surgery, systemic, radiation, multimodal)
-- **Staging-specific treatment protocols**
-- **Follow-up and surveillance guidelines**
-- **Post-treatment monitoring**
-- **Salvage therapy options**
-- **Treatment modification criteria**
+---
 
-### ❌ EXCLUDED Sections (Non-Treatment)
+## Step 1: Prepare the Dummy Dictionary
 
-- **Epidemiology and incidence data**
-- **Risk factors and etiology**
-- **Prevention strategies**
-- **Screening recommendations** (not decision-relevant for diagnosed patients)
-- **Initial diagnostic workup** (imaging, lab tests for diagnosis)
-- **Pathology classification** (background knowledge, not decision-making)
-- **Health economics and cost-effectiveness**
-- **Quality of life assessments** (descriptive sections)
-- **Methodology sections** (how guidelines were developed)
+1. Open `data/dummy_corpora/guideline_dictionary_dummy.py`.
+2. Replace the `"PATH OF YOUR PDF"` placeholders with the correct **relative paths** to your PDF files in the `Documents/Guidelines_pdf/` or `Documents/Guidelines_NCCN_pdf/` folders.
+3. Make sure each guideline has the correct `starting_page`, `final_cleaned_chunk` (for S3), `mark` (heading marker), and `images_to_save` (pages with images to skip).
 
-## Manual Review Process
+**Example:**
 
-### Step 1: Initial Automated Processing
-1. Extract PDFs to markdown using `pymupdf4llm`
-2. Clean and chunk text using `processing/extract_guidelines.py`
-3. Parse tables to JSON using `processing/clean_chunks.py`
-4. Save to Excel files
+```python
+guidelines_dict = {
+    'OE-CA': {
+        'path': "../Documents/Guidelines_pdf/LL_Ösophaguskarzinom_Kurzversion_3.1.pdf",
+        'starting_page': 21,
+        'final_cleaned_chunk': "### 15 Tabellenverzeichnis",
+        'mark': "### ",
+        'images_to_save': [22, 29, 48],
+    }
+}
 
-### Step 2: Manual Review (You Cannot Automate This)
-1. Open each guideline Excel file
-2. Read each chunk and classify as:
-   - **KEEP** - Treatment-relevant
-   - **REMOVE** - Background/non-treatment
+Step 2: Place PDFs
 
-3. Mark chunks for removal in a new column `curation_status`
-4. Save as `{guideline}_chunks_curated.xlsx`
+    S3 PDFs → Documents/Guidelines_pdf/
 
-### Step 3: Create Two Corpora
-- **Full Corpus**: All chunks from Step 1
-- **Selected Corpus**: Only KEEP chunks from Step 2
+    NCCN PDFs → Documents/Guidelines_NCCN_pdf/
 
-## Statistics
+    Ensure the paths in the dummy dictionary point to these files correctly.
 
-| Corpus Type | Total Chunks | Avg Chunk Size | Tables | Figures |
-|-------------|--------------|----------------|--------|---------|
-| Full | 15,420 | 384 tokens | 247 | 189 |
-| Selected | 10,683 | 412 tokens | 198 | 156 |
+Step 3: Extract JSON from PDFs
+S3 Guidelines
 
-**Reduction**: ~31% of chunks removed as non-treatment-relevant
+python processing/extract_s3_guidelines_to_json.py
 
-## Replication Instructions
+    Extracts text starting from starting_page and splits chunks using the specified mark.
 
-To replicate our curation:
+    Uses final_cleaned_chunk to remove trailing sections (e.g., tables).
 
-1. **Download guidelines** per `guidelines/README.md`
-2. **Run automated processing**:
-```bash
-   python processing/extract_guidelines.py
-   python processing/clean_chunks.py
-```
-3. **Manual review**: Review each chunk and decide KEEP/REMOVE
-4. **Save curated corpus**: Mark chunks in Excel
-5. **Create embeddings** for both full and curated corpora
+    Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
-**Note**: Manual curation is subjective and requires domain expertise. Your curation decisions may differ from ours, which is expected and acceptable.
+dummy_guidelines_OE_CA.json
+dummy_guidelines_Magen_CA.json
 
-## Example Curation Decisions
+NCCN Guidelines
 
-### Example 1: KEEP (Treatment-Relevant)
-```
-Chunk: "Bei lokal fortgeschrittenen Ösophaguskarzinomen (cT3-4) wird eine 
-neoadjuvante Radiochemotherapie empfohlen, gefolgt von chirurgischer Resektion..."
+python processing/extract_nccn_guidelines_to_json.py
 
-Decision: KEEP - Direct treatment recommendation
-```
+    Creates one chunk per page between starting_page and final_page, skipping images_to_save pages.
 
-### Example 2: REMOVE (Epidemiology)
-```
-Chunk: "Das Ösophaguskarzinom ist die achthäufigste Krebserkrankung weltweit. 
-Die Inzidenz beträgt 5,2 pro 100.000 Einwohner..."
+    Output JSON files are saved in data/dummy_corpora/ with filenames like:
 
-Decision: REMOVE - Epidemiological background, not treatment-relevant
-```
+dummy_guidelines_OE_CA.json
+dummy_guidelines_Magen_CA.json
 
-### Example 3: REMOVE (Screening)
-```
-Chunk: "Bei Patienten mit Barrett-Ösophagus sollte eine endoskopische 
-Überwachung alle 3-5 Jahre erfolgen..."
+Step 4: Manual Curation
 
-Decision: REMOVE - Screening recommendation for undiagnosed patients
-```
+After generating the JSON files, manual curation is required:
 
-## Files Structure After Curation
-```
-Guidelines_xlsx/
-├── OE-CA_chunks_cleaned.xlsx              # Full corpus
-├── OE-CA_chunks_curated.xlsx              # Selected corpus
-├── OE-CA_chunks_cleaned_embeddings.xlsx   # Full corpus with embeddings
-└── OE-CA_chunks_curated_embeddings.xlsx   # Selected corpus with embeddings
-```
+    Images and Tables:
 
-## Questions?
+        Extracted image/text combinations should be checked and rewritten if necessary.
 
-If you have questions about specific curation decisions, please open an issue in the repository.
+        Ensure tables from figures are correctly represented in JSON.
+
+    Selected Corpora:
+
+        Open the JSON files and set "selected_corpora": 1 for chunks that should be included in the curated corpus.
+
+        Default value is 0.
+
+    Quality Check:
+
+        Ensure text chunks are readable and headings are preserved where relevant.
+
+        Remove any irrelevant footer or page numbering text if present.
+
+Notes
+
+    chunk_id is automatically assigned:
+
+        S3 guidelines → start at 101
+
+        NCCN guidelines → start at 201
+
+    Ensure all paths in the dictionary are relative to the repository root.
+
+    The mark variable is essential for S3 guidelines; NCCN guidelines usually work per-page without headings.
+
+    The scripts rely on pymupdf4llm to read PDFs and convert them into markdown-like text.
+
+Requirements
+
+    Python 3.9+
+
+    Packages: pymupdf4llm, pandas (optional for S3 chunk processing), json
+
+    Install dependencies via pip:
+
+pip install pandas pymupdf4llm
+
+Workflow Summary
+
+    Update the dummy dictionary with correct PDF paths and page info.
+
+    Place PDFs in the corresponding folders.
+
+    Run S3 and/or NCCN extraction scripts.
+
+    Manually curate JSON outputs: update selected_corpora, rewrite images/tables, remove noise.
+
+    Use curated JSON for downstream applications (e.g., corpora creation, NLP processing, etc.).
+
+
+---
+
+I can also make a **shorter, “quick start” version** if you want something even more compact for team members.  
+
+Do you want me to do that next?
+::contentReference[oaicite:0]{index=0}

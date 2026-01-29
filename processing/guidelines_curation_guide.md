@@ -35,10 +35,13 @@ Ensure the paths in the dummy dictionary point to these files correctly.
 
 Given the structure of the German S3 Guidelines, we decided to create one chunk per chapters (determined by the specified mark).
 
-Use python processing/extract_s3_guidelines_to_json.py
+Use
+```python processing/extract_s3_guidelines_to_json.py
+```
 - Extracts text starting from starting_page and splits chunks using the specified mark.
 - Uses final_cleaned_chunk to remove trailing sections (e.g., tables).
 - Output JSON files are saved in data/dummy_corpora/ with filenames like:
+
 
 ```text
     dummy_S3_guidelines_esophageal.json

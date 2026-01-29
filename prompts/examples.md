@@ -171,8 +171,7 @@ The 16 experimental configurations combine:
 
 - **Temperature:** 0.8 (balances determinism with exploration)
 - **Top P:** 1.0 (full probability distribution)
-- **Max Tokens:** 300 (encourages concise responses)
-- **Language:** Prompts explicitly request German output to match tumor board format
+- **Language:** Prompts explicitly request German output to match tumor board format in the paper
 - **Fragestellung:** German term for "clinical question" - many tumor board reports include explicit questions
 
 ---

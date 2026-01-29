@@ -66,7 +66,7 @@ for guideline_name, info in guidelines_dict.items():
         })
 
     # Save JSON
-    json_filename = f"dummy_guidelines_{guideline_name.replace('-', '_')}.json"
+    json_filename = f"dummy_S3_guidelines_{guideline_name.replace('-', '_')}.json"
     json_path = os.path.join(output_folder, json_filename)
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump(json_data, f, ensure_ascii=False, indent=2)

@@ -153,11 +153,19 @@ if __name__ == "__main__":
         print(f"Using only selected corpora chunks: {len(corpora)} chunks available")
     
     # Step 4: Retrieve top-k
-    retrieved_chunks = retrieve_top_k_chunks(
-        query_embedding=query_embedding,
-        corpora=corpora,
-        top_k=TOP_K
-    )
+    try:
+        retrieved_chunks = retrieve_top_k_chunks(
+            query_embedding=query_embedding,
+            corpora=corpora,
+            top_k=TOP_K
+        )
+    except ValueError as e:
+        if "shapes" in str(e) and "not aligned" in str(e):
+            print("ERROR: Embedding dimension mismatch detected.")
+            print("RUN the corpora_embeddings.py script in the folder 'guidelines processing' first!")
+            sys.exit(1)
+        else:
+            raise
 
     # Step 5: Build RAG prompt
     prompt = get_prompt_for_configuration(
@@ -175,7 +183,7 @@ if __name__ == "__main__":
 
     print("\n=== Retrieved Guideline Chunks ===")
     for chunk in retrieved_chunks:
-        print(f"- Chunk {chunk['chunk_id']} | Score: {chunk['score']:.4f}")
+        print(f"- Chunk {chunk['chunk_id']} | Score: {chunk['score']:.4f}  | Text: {chunk['text']}")
 
     print("\n=== RAG Output ===")
     print(response)

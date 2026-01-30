@@ -17,10 +17,10 @@ no real patient data or guideline documents are included.
 ## What is Included
 
 - Prompt templates and examples for all experimental configurations
-- Retrieval and RAG orchestration logic
-- Guidelines processing logic
 - Dummy patient cases and synthetic guideline corpora
+- Guidelines processing logic
 - Configuration matrix for the 16 experimental setups
+- Retrieval and RAG orchestration logic
 
 ## What is Not Included
 

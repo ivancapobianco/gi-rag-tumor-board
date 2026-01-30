@@ -5,7 +5,7 @@ This folder contains all the Python pipelines and accessory scripts for processi
 
 ```python
 # Insert your OpenAI project API key here or load it from environment variables
-API_KEY_PROJECT = "YOUR API_KEY_PROJECT"
+API_KEY_PROJECT = "YOUR PROJECT API KEY"
 
 [...]
 

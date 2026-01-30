@@ -30,6 +30,7 @@ board clinicians into one of the following **nine therapeutic categories**:
 
 The table below provides illustrative examples of MDT recommendations and their
 corresponding outcome classification.
+All examples were originally formulated in German and here translated into English for clarity and consistency.
 
 | MDT Recommendation (English translation) | Assigned Category |
 |-----------------------------------------|------------------|

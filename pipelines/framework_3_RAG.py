@@ -143,6 +143,7 @@ if __name__ == "__main__":
             if not selected_json_files:
                 print(f"No JSON files found for {organ_choice}, using dummy corpus instead.\n")
         else:
+            use_real = False
             print("Abort or invalid choice, using dummy corpus.\n")
 
 

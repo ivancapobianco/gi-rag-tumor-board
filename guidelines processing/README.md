@@ -2,6 +2,9 @@
 
 This repository contains scripts and dummy dictionaries to extract content from PDF guidelines (S3 and NCCN) and convert them into structured JSON format. The workflow is designed to support downstream processing, corpora selection, and manual curation.
 
+You can find the guidelines at these sites:
+- **S3 German Guidelines:** `https://www.leitlinienprogramm-onkologie.de/leitlinien/uebersicht` (`Ösophaguskarzinom`, `Magenkarzinom`, `Pankreaskarzinom`, `Kolorektales Karzinom`, and `HCC und biliäre Karzinome`)
+- **NCCN Guidelines:** `https://www.nccn.org/guidelines/category_1` (`Esophageal and Esophagogastric Junction Cancers`, `Gastric Cancer`, `Pancreatic Adenocarcinoma`, `Colon Cancer`, `Rectal Cancer`, `Hepatocellular Carcinoma`, `Biliary Tract Cancers`)
 
 ## Step 1: Place PDFs guidelines in the correct folder
 

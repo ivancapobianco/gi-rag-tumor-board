@@ -40,9 +40,9 @@ Use:
 pyton processing/extract_s3_guidelines_to_json.py
 ```
 - Extracts text starting from starting_page and splits chunks using the specified mark.
-- Uses final_cleaned_chunk to remove trailing sections (e.g., tables).
-- Output JSON files are saved in data/dummy_corpora/ with filenames like:
-
+- Uses starting_page and final_cleaned_chunk to remove trailing sections (e.g., accreditations, introduction, acknowledgements, references).
+- Skips images_to_save pages.
+- Output JSON files are saved in `data/dummy_corpora/`, with filenames based on the keys of guidelines_dict in `guideline_dictionary_dummy.py`, for example:
 
 ```text
     dummy_S3_guidelines_esophageal.json
@@ -59,7 +59,7 @@ python processing/extract_nccn_guidelines_to_json.py
 ```
 
 - Creates one chunk per page between starting_page and final_page, skipping images_to_save pages.
-- Output JSON files are saved in data/dummy_corpora/ with filenames like:
+- Output JSON files are saved in `data/dummy_corpora/`, with filenames based on the keys of guidelines_nccn_dict in `guideline_dictionary_dummy.py`, for example:
 
 ```text
     dummy_NCCN_guidelines_esophageal.json

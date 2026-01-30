@@ -1,38 +1,65 @@
 # gi-rag-tumor-board
+
 Retrieval-Augmented Generation framework for gastrointestinal oncology tumor board decision support
 
 This repository accompanies the manuscript:
-
-"Toward AI Tumor Boards: Retrieval-Augmented Generation Improves Concordance
-in Gastrointestinal Oncology" (npj Digital Medicine).
+"Toward AI Tumor Boards: Retrieval-Augmented Generation Improves Concordance in Gastrointestinal Oncology".
 
 ## Purpose
 
-The repository provides full transparency of the methodological framework,
-prompting strategies, and retrieval logic pipelines used in the study.
+This repository provides full transparency of the methodological framework, prompting strategies, and retrieval pipelines used in the study.
 
-Due to patient privacy regulations and copyright restrictions,
-no real patient data or guideline documents are included.
+Note: Due to patient privacy regulations and copyright restrictions, no real patient data or guideline documents are included.
 
-## What is Included
+## Repository Structure & Contents
 
-- Prompt templates and examples for all experimental configurations
+| Folder / File           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `config`                | Contains hyperparameter files (`hyperparameters.yaml`) for experimental setups.                                                                                                                                                                                                                                                                                                                                                             |
+| `data`                  | Contains **dummy patient cases** and **synthetic guideline corpora** (`dummy_corpora/`), plus the guideline dictionary (`guideline_dictionary_dummy.py`).                                                                                                                                                                                                                                                                                   |
+| `experiments`           | Includes configuration matrices and scripts for reproducing the 16 experimental setups (`configuration_matrix.yaml`).                                                                                                                                                                                                                                                                                                                       |
+| `guidelines processing` | Contains scripts for processing guidelines, chunking PDFs, and generating JSON corpora.                                                                                                                                                                                                                                                                                                                                                     |
+| `pipelines`             | All pipeline scripts: <br>- `framework_1_simple_request.py` – runs a single request prompt on a patient case <br>- `framework_2_chatgpt_assistant.py` – runs an assistant-style prompt using a pre-configured ChatGPT assistant <br>- `framework_3_RAG.py` – executes the custom RAG pipeline <br>- `rewrite.py` – rewrites patient cases into structured guideline-style format <br>- `embeddings.py` – embeds patient cases for retrieval |
+| `prompts`               | Contains all prompt templates and examples for different experimental configurations (`README.md` inside prompts folder explains usage).                                                                                                                                                                                                                                                                                                    |
+| `.gitignore`            | Git ignore file.                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `LICENSE`               | Repository license.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| `README.md`             | This main README.                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `requirements.txt`      | All Python dependencies needed to run the pipelines.                                                                                                                                                                                                                                                                                                                                                                                        |
+
+## Reproducibility
+
+The repository enables methodological replication of the study design and prompt engineering strategies. Synthetic data demonstrate end-to-end execution of the pipelines.
+
+- Dummy patient cases: data/dummy_patients/
+
+- Dummy guideline corpora: data/dummy_corpora/
+
+- Experimental configuration: experiments/configuration_matrix.yaml
+
+You can run any of the three pipelines (framework_1, framework_2, framework_3) on the dummy data to reproduce retrieval, embedding, and RAG outputs.
+
+
+## What Is Included
+
+- Prompt templates and examples for all experimental setups
+
 - Dummy patient cases and synthetic guideline corpora
-- Guidelines processing logic
+
+- Guideline processing logic (PDF chunking → JSON → embeddings)
+
 - Configuration matrix for the 16 experimental setups
+
 - Retrieval and RAG orchestration logic
 
 ## What is Not Included
 
 - Real patient-level clinical data
+
 - Copyrighted guideline texts (German S3, NCCN)
+
 - API keys or credentials
 
-## Reproducibility
 
-The repository enables methodological replication of the study design and
-prompt engineering strategies.
-Synthetic data are provided to demonstrate end-to-end execution.
 
 ## Disclaimer
 

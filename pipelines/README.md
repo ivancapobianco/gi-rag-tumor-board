@@ -1,6 +1,17 @@
 # Pipelines Overview
 
-This folder contains all the Python pipelines and accessory scripts for processing patient cases, integrating guideline corpora, and running single-request prompt or retrieval-augmented generation (RAG).  
+This folder contains all the Python pipelines and accessory scripts for processing patient cases, integrating guideline corpora, and running single-request prompt or retrieval-augmented generation (RAG). 
+- **Remember to insert your API_KEY_PROJECT and your Assistant ID** in `prompts/chatgpt.py`:
+
+```python
+# Insert your OpenAI project API key here or load it from environment variables
+API_KEY_PROJECT = "YOUR API_KEY_PROJECT"
+
+[...]
+
+# Insert your Assistant ID here
+ASSISTANT_ID = "YOUR ASSISTANT ID"
+```
 
 The folder contains **five main files**:
 
@@ -36,7 +47,7 @@ Runs a patient case through a **pre-configured ChatGPT Assistant**.
 - Uses the assistant’s internal model selection.  
 - Optionally works on rewritten cases.  
 - Guidelines are retrieved by the assistant; PDFs must be available in its environment.
-- - **Remember to insert your Assistant ID** in `prompts/chatgpt.py`:
+- **Remember to insert your Assistant ID** in `prompts/chatgpt.py`:
 
 ```python
 # Insert your Assistant ID here

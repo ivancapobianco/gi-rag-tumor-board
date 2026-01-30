@@ -36,7 +36,12 @@ Runs a patient case through a **pre-configured ChatGPT Assistant**.
 - Uses the assistant’s internal model selection.  
 - Optionally works on rewritten cases.  
 - Guidelines are retrieved by the assistant; PDFs must be available in its environment.
+- - **Remember to insert your Assistant ID** in `prompts/chatgpt.py`:
 
+```python
+# Insert your Assistant ID here
+ASSISTANT_ID = "YOUR ASSISTANT ID"
+```
 ---
 
 ## 5. `framework_3_RAG.py`

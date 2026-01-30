@@ -80,7 +80,7 @@ Make sure you are using the provided virtual environment or install dependencies
 pip install -r requirements.txt
 ```
 
-###2. Dummy Patient Cases & Guidelines
+### 2. Dummy Patient Cases & Guidelines
 
 - Dummy patient cases: data/dummy_patients/
 - Dummy guideline corpora: data/dummy_corpora/

@@ -1,7 +1,7 @@
 # Minimal dummy dictionary for S3 and NCCN guidelines
 # !!! Please use only the keys esophageal, gastric, hepatic, pancreas, or colorectal for the pipelines to function correctly. !!!
 
-guidelines_dict = {
+guidelines_s3_dict = {
     'esophageal': {
         'path': "guidelines/NAME OF YOUR PDF.pdf", # Make sure the PDF is located in the guidelines folder, and specify its path in the dictionary in the format guidelines/file_name.pdf.
         'starting_page': 21,

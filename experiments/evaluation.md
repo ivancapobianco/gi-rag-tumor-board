@@ -6,8 +6,8 @@ for concordance analysis.
 
 ## Outcome Classification
 
-Both MDT and AI recommendations are independently classified by two blinded
-clinicians into one of the following **nine therapeutic categories**:
+Both MDT and AI recommendations were independently classified by two blinded
+board clinicians into one of the following **nine therapeutic categories**:
 
 1. **Best Supportive Care**  
 2. **Further Diagnostics**  

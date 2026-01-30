@@ -75,7 +75,7 @@ After generating the JSON files, manual curation is required:
 
 - ### Images and Tables:
     
-    Images should be rewritten in plain text. We usually enclose them in the tag <chart>image description</chart>.
+    Images should be rewritten in plain text. We usually enclose them in the tag `<chart>image description</chart>`.
     
     For the paper we convert every markdown table to a written JSON format. If this is absolutely necessary, it is to be questioned.
     

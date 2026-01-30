@@ -1,13 +1,13 @@
 """
 Run a CUSTOM RAG pipeline using:
 - Embedding of the patient case
-- Precomputed dummy guideline embeddings (JSON)
+- Precomputed guideline embeddings (dummy or real)
 - Local similarity search
 - Prompt-based RAG inference via ChatCompletion
 
 IMPORTANT:
-- Guideline embeddings are fully synthetic and for demonstration only
-- No copyrighted guideline text is included
+- Guideline embeddings are fully synthetic/dummy for demonstration only
+- Real guidelines must already have embeddings computed
 """
 
 import os
@@ -20,12 +20,13 @@ from typing import List, Dict, Optional
 # Path setup: allow imports from parallel folders
 # ------------------------------------------------------------------
 current_dir = os.path.dirname(os.path.abspath(__file__))
-
 prompts_dir = os.path.abspath(os.path.join(current_dir, '..', 'prompts'))
 processing_dir = os.path.abspath(os.path.join(current_dir, '..', 'processing'))
+dummy_corpora_dir = os.path.abspath(os.path.join(current_dir, '..', 'data', 'dummy_corpora'))
 
 sys.path.append(prompts_dir)
 sys.path.append(processing_dir)
+sys.path.append(dummy_corpora_dir)
 
 # ------------------------------------------------------------------
 # Imports
@@ -33,24 +34,7 @@ sys.path.append(processing_dir)
 from prompt_templates import get_prompt_for_configuration
 from chatgpt import chatgpt_chat_completion
 from embeddings import embed_text
-
-# -----------------------------
-# User configuration
-# -----------------------------
-print("Select model (1 or 2):")
-print("1) gpt-4o-mini")
-print("2) gpt-4o")
-model_choice = input("Enter choice [1 or 2]: ").strip()
-MODEL_NAME = "gpt-4o-mini" if model_choice == "1" else "gpt-4o"
-print()
-
-# Ask whether to use rewritten text
-use_rewritten = input("Use rewritten case? (y/n): ").strip().lower() == "y"
-print()
-
-# Ask whether to use only selected corpora chunks
-use_selected_corpora = input("Use only selected corpora chunks? (y/n): ").strip().lower() == "y"
-print()
+from guideline_dictionary_dummy import guidelines_s3_dict
 
 # ------------------------------------------------------------------
 # Configuration
@@ -61,10 +45,6 @@ CASE_PATH = os.path.abspath(
     os.path.join(current_dir, '..', 'data', 'dummy_patients', 'example_case_de.txt')
 )
 
-CORPORA_PATH = os.path.abspath(
-    os.path.join(current_dir, '..', 'data', 'dummy_corpora', 'dummy_guidelines_with_embeddings.json')
-)
-
 # ------------------------------------------------------------------
 # Helper functions
 # ------------------------------------------------------------------
@@ -73,16 +53,15 @@ def load_case_text(path: str) -> str:
         return f.read().strip()
 
 
-def load_guideline_corpora(path: str) -> List[Dict]:
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+def load_guideline_corpora(json_paths: List[str]) -> List[Dict]:
+    merged = []
+    for path in json_paths:
+        with open(path, 'r', encoding='utf-8') as f:
+            merged.extend(json.load(f))
+    return merged
 
 
 def cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
-    """
-    Compute cosine similarity between two vectors.
-    Returns a float in [-1, 1].
-    """
     norm1 = np.linalg.norm(vec1)
     norm2 = np.linalg.norm(vec2)
     if norm1 == 0 or norm2 == 0:
@@ -95,22 +74,16 @@ def retrieve_top_k_chunks(
     corpora: Optional[List[Dict]],
     top_k: int = 5
 ) -> List[Dict]:
-    """
-    Retrieve top-k guideline chunks by cosine similarity to the query embedding.
-    """
     scored_chunks = []
-
     for chunk in corpora:
         chunk_embedding = np.array(chunk["embedding"], dtype=float)
         score = cosine_similarity(query_embedding, chunk_embedding)
-
         scored_chunks.append({
             "chunk_id": chunk.get("chunk_id"),
             "source": chunk.get("source"),
             "text": chunk.get("text"),
             "score": score
         })
-
     scored_chunks.sort(key=lambda x: x["score"], reverse=True)
     return scored_chunks[:top_k]
 
@@ -119,44 +92,90 @@ def retrieve_top_k_chunks(
 # ------------------------------------------------------------------
 if __name__ == "__main__":
 
-    print("Running local RAG pipeline with dummy guideline embeddings\n")
+    print("Running local RAG pipeline\n")
 
-    # Step 1: Load patient case
+    # -----------------------------
+    # Load patient case
+    # -----------------------------
     case_text = load_case_text(CASE_PATH)
 
+    # -----------------------------
+    # User configuration
+    # -----------------------------
+    # Select the model
+    print("Select model (1 or 2):")
+    print("1) gpt-4o-mini")
+    print("2) gpt-4o")
+    model_choice = input("Enter choice [1 or 2]: ").strip()
+    MODEL_NAME = "gpt-4o" if model_choice == "2" else "gpt-4o-mini"
+    print('\nSelected model: {}\n'.format(MODEL_NAME))
+
+
     # Optional rewriting
+    use_rewritten = input("Use rewritten case? (y/n): ").strip().lower() == "y"
     if use_rewritten:
         try:
             from rewrite import rewrite_case_from_txt
-            rewrite_available = True
-        except ImportError:
-            rewrite_available = False
-
-        if rewrite_available:
             case_text = rewrite_case_from_txt(CASE_PATH)
-            print("=== Using rewritten case ===\n")
+            print("\n=== Using rewritten case ===\n")
+        except ImportError:
+            print("WARNING: Rewrite function not found. Using original case.\n")
+
+    # -----------------------------
+    # Select guideline corpora
+    # -----------------------------
+    print("\nWARNING: You are about to use the dummy guideline corpus for demonstration.")
+    use_real = input("Do you want to use real guidelines that have already been digested? (y/n): ").strip().lower() == "y"
+
+    selected_json_files = []
+    if use_real:
+        print("\nSelect organ/system for corpus:")
+        print("Options: esophageal, gastric, hepatic, pancreas, colorectal, abort")
+        organ_choice = input("Enter your choice: ").strip().lower()
+
+        if organ_choice in ["esophageal", "gastric", "hepatic", "pancreas", "colorectal"]:
+            # Search all JSON files in dummy_corpora folder containing the keyword
+            selected_json_files = [
+                os.path.join(dummy_corpora_dir, f)
+                for f in os.listdir(dummy_corpora_dir)
+                if f.endswith(".json") and organ_choice in f
+            ]
+            if not selected_json_files:
+                print(f"No JSON files found for {organ_choice}, using dummy corpus instead.\n")
         else:
-            print("Rewrite function not found. Using original case.\n")
+            print("Abort or invalid choice, using dummy corpus.\n")
 
 
-    # Step 2: Embed patient case
-    query_embedding = np.array(embed_text(case_text), dtype=float)
+    if not selected_json_files:
+        if use_real:
+            # Fallback to dummy S3 guidelines
+            selected_json_files = [
+                os.path.join(dummy_corpora_dir, f"dummy_S3_guidelines_{k.replace('-', '_')}.json")
+                for k in guidelines_s3_dict.keys()
+            ]
+        else:
+            selected_json_files = [os.path.join(current_dir, '..', 'data', 'dummy_corpora', 'dummy_guidelines_with_embeddings.json')]
 
-    # Step 3: Load corpora
-    corpora = load_guideline_corpora(CORPORA_PATH)
+    # Load and merge JSON files
+    corpora = load_guideline_corpora(selected_json_files)
+    print(f"Loaded {len(corpora)} chunks from {len(selected_json_files)} JSON file(s).\n")
 
-    # Step 3b: Optionally filter corpora by selected_corpora
+    # Optionally filter by selected_corpora
+    use_selected_corpora = input("Use only selected corpora chunks? (y/n): ").strip().lower() == "y"
     if use_selected_corpora:
         corpora = [chunk for chunk in corpora if chunk.get("selected_corpora", 0) == 1]
-        print(f"Using only selected corpora chunks: {len(corpora)} chunks available")
-    
-    # Step 4: Retrieve top-k
+        print(f"Using only selected corpora chunks: {len(corpora)} available\n")
+
+    # -----------------------------
+    # Embed patient case
+    # -----------------------------
+    query_embedding = np.array(embed_text(case_text), dtype=float)
+
+    # -----------------------------
+    # Retrieve top-k chunks
+    # -----------------------------
     try:
-        retrieved_chunks = retrieve_top_k_chunks(
-            query_embedding=query_embedding,
-            corpora=corpora,
-            top_k=TOP_K
-        )
+        retrieved_chunks = retrieve_top_k_chunks(query_embedding, corpora, top_k=TOP_K)
     except ValueError as e:
         if "shapes" in str(e) and "not aligned" in str(e):
             print("ERROR: Embedding dimension mismatch detected.")
@@ -165,17 +184,23 @@ if __name__ == "__main__":
         else:
             raise
 
-    # Step 5: Build RAG prompt
+    # -----------------------------
+    # Build RAG prompt
+    # -----------------------------
     prompt = get_prompt_for_configuration(
         case_text=case_text,
         config_type="rag_full",
         retrieved_chunks=retrieved_chunks
     )
 
-    # Step 6: Run model
+    # -----------------------------
+    # Run model
+    # -----------------------------
     response = chatgpt_chat_completion(prompt, model=MODEL_NAME)
 
+    # -----------------------------
     # Output
+    # -----------------------------
     print("=== Patient Case ===")
     print(case_text)
 

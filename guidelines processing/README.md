@@ -17,8 +17,8 @@ Place the PDFs of the German S3 and/or NCCN guidelines that you want to use in t
 **Example:**
 
 ```python
-guidelines_dict = {
-    'OE-CA': {
+guidelines_s3_dict = {
+    'esophageal': {
         'path': "../data/dummy_corpora/guidelines/LL_Ösophaguskarzinom_Kurzversion_3.1.pdf",
         'starting_page': 21,
         'final_cleaned_chunk': "### 15 Tabellenverzeichnis",

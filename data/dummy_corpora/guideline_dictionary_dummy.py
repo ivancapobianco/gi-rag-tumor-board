@@ -16,6 +16,9 @@ guidelines_s3_dict = {
         'mark': "### ",
         'images_to_save': [41],
     },
+    'pancreatic' : {},
+    'hepatic' : {},
+    'colorectal' : {},
 }
 
 guidelines_nccn_dict = {
@@ -33,4 +36,7 @@ guidelines_nccn_dict = {
         'mark': "### ",
         'images_to_save': [9, 11, 13],
     },
+    'pancreatic' : {},
+    'hepatic' : {},
+    'colorectal' : {},
 }

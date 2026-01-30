@@ -130,10 +130,10 @@ if __name__ == "__main__":
     selected_json_files = []
     if use_real:
         print("\nSelect organ/system for corpus:")
-        print("Options: esophageal, gastric, hepatic, pancreas, colorectal, abort")
+        print("Options: esophageal, gastric, hepatic, pancreatic, colorectal, abort")
         organ_choice = input("Enter your choice: ").strip().lower()
 
-        if organ_choice in ["esophageal", "gastric", "hepatic", "pancreas", "colorectal"]:
+        if organ_choice in ["esophageal", "gastric", "hepatic", "pancreatic", "colorectal"]:
             # Search all JSON files in dummy_corpora folder containing the keyword
             selected_json_files = [
                 os.path.join(dummy_corpora_dir, f)

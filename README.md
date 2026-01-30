@@ -123,3 +123,15 @@ All pipelines support using rewritten patient cases:
 - If yes, the `rewrite.py` function reformats the case in a standardized, guideline-style format before processing.
 
 - Make sure `rewrite.py` is available in the `pipelines/` folder.
+
+### 6. Output
+
+- The RAG pipeline prints:
+
+  - Patient case (original or rewritten)
+
+  - Retrieved guideline chunks with similarity scores
+
+  - Generated RAG output
+
+- Other pipelines print the prompt output directly in the console.

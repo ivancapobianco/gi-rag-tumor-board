@@ -57,14 +57,16 @@ ASSISTANT_ID = "YOUR ASSISTANT ID"
 
 ## 5. `framework_3_RAG.py`
 
-This framework runs a **custom RAG pipeline**:  
-- Embeds the patient case.  
-- Loads precomputed guideline embeddings (JSON).  
-- Performs local similarity search to retrieve the most relevant guideline chunks.  
+Runs a **custom RAG pipeline** on a patient case:  
+- Embeds the patient case using `embeddings.py`.  
+- Loads precomputed guideline embeddings (dummy or real).  
+- Allows optional filtering of chunks marked as selected.  
+- Performs local similarity search to retrieve the top-k most relevant guideline chunks.  
 - Constructs a prompt combining the case and retrieved chunks.  
-- Calls ChatGPT for RAG inference.  
+- Calls ChatGPT for RAG inference.
 
-It supports optional use of rewritten patient cases and filtering of selected corpora chunks.
+Supports optional use of **rewritten cases** and **user-selected guideline corpora** (dummy S3 or real digested guidelines by organ/system).
+
 
 ---
 

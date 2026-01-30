@@ -93,7 +93,7 @@ After generating the JSON files, manual curation is required:
          2. **Curated Corpus:** Optimized for clinical decision support during tumor board meetings. Focuses only on actionable and treatment-relevant content.
 
     2. **Curation Criteria for the Tumor Board Corpus**  
-       - Include chunks directly supporting treatment planning, staging decisions, surgical or systemic therapy strategies.  
+       - Include only chunks that directly support treatment planning, staging, and surgical or systemic therapy decisions. This step must be performed with the support of board-certified oncologists or surgical oncologists.
        - Exclude repetitive or non-actionable sections, such as:  
          - Epidemiology or background statistics  
          - Prevention strategies  

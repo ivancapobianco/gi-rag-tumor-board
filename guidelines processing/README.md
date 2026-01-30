@@ -125,35 +125,34 @@ Run the embedding script to compute vector embeddings for each guideline chunk:
 ```bash
 python processing/corpora_embeddings.py
 ```
-- Input: curated JSON files in data/dummy_corpora/ (e.g., dummy_guidelines.json)
-- Output: JSON files with embeddings appended, e.g., dummy_guidelines_with_embeddings.json
-
-These embeddings are required for local similarity search in the RAG pipeline.
+- Preset-Input: curated JSON files in data/dummy_corpora/ (e.g., dummy_guidelines.json)
+- Preset-Output: JSON files with embeddings appended, e.g., dummy_guidelines_with_embeddings.json
+  
+Update the input and output filenames in `processing/corpora_embeddings.py` as required. These embeddings are required for local similarity search in the RAG pipeline.
+When using processed guideline PDFs, keep input and output names identical to prevent conflicts when running `pipelines/framework_3_RAG.py`.
 
 Note: If you try to run the RAG pipeline without embeddings, you may get a dimension mismatch error. Always run this step first.
 
 
 ## Notes
 
-chunk_id is automatically assigned:
+- chunk_id is automatically assigned:
 
 ```text
         S3 guidelines → start at 101
         NCCN guidelines → start at 501
 ```
 
-Ensure all paths in the dictionary are relative to the repository root.
-
-The mark variable is essential for S3 guidelines; NCCN guidelines usually work per-page without headings.
-
-The scripts rely on pymupdf4llm to read PDFs and convert them into markdown-like text.
+- Ensure all paths in the dictionary are relative to the repository root.
+- The mark variable is essential for S3 guidelines; NCCN guidelines usually work per-page without headings.
+- The scripts rely on pymupdf4llm to read PDFs and convert them into markdown-like text.
 
 
 
 # Workflow Summary
 
-1. Update the dummy dictionary with correct PDF paths and page info.
-2. Place PDFs in the corresponding folders.
+1. Place PDFs in the corresponding folders.
+2. Update the dummy dictionary with correct PDF paths and page info.
 3. Run S3 and/or NCCN extraction scripts.
 4. Manually curate JSON outputs: update selected_corpora, rewrite images/tables, remove noise.
 5. Use curated JSON with embeddings for downstream applications (e.g., RAG pipeline, NLP processing, etc.).

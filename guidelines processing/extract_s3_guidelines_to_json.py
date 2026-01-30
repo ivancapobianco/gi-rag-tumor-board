@@ -9,7 +9,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 dummy_corpora_dir = os.path.abspath(os.path.join(current_dir, '..', 'data', 'dummy_corpora'))
 sys.path.append(dummy_corpora_dir)
 
-from guideline_dictionary_dummy import guidelines_dict
+from guideline_dictionary_dummy import guidelines_s3_dict
 
 # Output folder for JSON files
 output_folder = os.path.abspath(os.path.join('..', 'data', 'dummy_corpora'))
@@ -39,7 +39,7 @@ def split_last_chunk(chunks, heading):
     return new_chunks[:-1]
 
 # Loop through S3 dummy guidelines
-for guideline_name, info in guidelines_dict.items():
+for guideline_name, info in guidelines_s3_dict.items():
     print(f"Processing S3 guideline: {guideline_name}")
 
     pdf_path = os.path.abspath(os.path.join(current_dir, '..', 'data', 'dummy_corpora', info['path']))

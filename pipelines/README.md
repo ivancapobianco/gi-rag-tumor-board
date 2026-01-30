@@ -1,1 +1,59 @@
+# Pipelines Overview
+
+This folder contains all the Python pipelines and accessory scripts for processing patient cases, integrating guideline corpora, and running retrieval-augmented generation (RAG) or single-request prompts.  
+
+The folder contains **five main files**:
+
+---
+
+## 1. `embeddings.py`
+
+This script contains functions to embed text using the chosen embedding model.  
+It is used by the RAG pipeline (`framework_3_RAG.py`) to generate vector representations of patient cases and guideline chunks for local similarity search.  
+
+---
+
+## 2. `rewrite.py`
+
+This script provides a pipeline to rewrite a patient case into a standardized, guideline-style format.  
+It uses a prompt template and calls the ChatGPT API to produce a structured, clinical-case presentation.  
+Other pipelines (`framework_1_simple_request.py` and `framework_2_chatgpt_assistant.py`) optionally use this script to operate on rewritten cases.
+
+---
+
+## 3. `framework_1_simple_request.py`
+
+This framework allows the user to run a **single-request prompt** on a patient case.  
+- User selects the model at runtime.  
+- Case can be original or rewritten.  
+- Output is a single response from ChatGPT using the provided prompt configuration.  
+
+---
+
+## 4. `framework_2_chatgpt_assistant.py`
+
+This framework runs an **Assistant-style prompt** on a patient case.  
+- Model selection is handled internally by the assistant.  
+- Optionally works on rewritten cases.  
+- Designed to integrate with pre-configured guideline documents in the Assistant environment.  
+
+---
+
+## 5. `framework_3_RAG.py`
+
+This framework runs a **custom RAG pipeline**:  
+- Embeds the patient case.  
+- Loads precomputed guideline embeddings (JSON).  
+- Performs local similarity search to retrieve the most relevant guideline chunks.  
+- Constructs a prompt combining the case and retrieved chunks.  
+- Calls ChatGPT for RAG inference.  
+
+It supports optional use of rewritten patient cases and filtering of selected corpora chunks.
+
+---
+
+> **Summary:**  
+- **Accessory scripts:** `embeddings.py`, `rewrite.py`  
+- **Frameworks:** `framework_1_simple_request.py`, `framework_2_chatgpt_assistant.py`, `framework_3_RAG.py`  
+- Pipelines are designed to be modular, allowing you to run single prompts, assistant prompts, or a full RAG workflow depending on your use case.
 

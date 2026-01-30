@@ -1,6 +1,6 @@
 # Pipelines Overview
 
-This folder contains all the Python pipelines and accessory scripts for processing patient cases, integrating guideline corpora, and running retrieval-augmented generation (RAG) or single-request prompts.  
+This folder contains all the Python pipelines and accessory scripts for processing patient cases, integrating guideline corpora, and running single-request prompt or retrieval-augmented generation (RAG).  
 
 The folder contains **five main files**:
 
@@ -17,7 +17,7 @@ It is used by the RAG pipeline (`framework_3_RAG.py`) to generate vector represe
 
 This script provides a pipeline to rewrite a patient case into a standardized, guideline-style format.  
 It uses a prompt template and calls the ChatGPT API to produce a structured, clinical-case presentation.  
-Other pipelines (`framework_1_simple_request.py` and `framework_2_chatgpt_assistant.py`) optionally use this script to operate on rewritten cases.
+Other pipelines (`framework_1_simple_request.py`, `framework_2_chatgpt_assistant.py` and `framework_3_RAG.py`) optionally use this script to operate on rewritten cases.
 
 ---
 
@@ -32,10 +32,10 @@ This framework allows the user to run a **single-request prompt** on a patient c
 
 ## 4. `framework_2_chatgpt_assistant.py`
 
-This framework runs an **Assistant-style prompt** on a patient case.  
-- Model selection is handled internally by the assistant.  
+Runs a patient case through a **pre-configured ChatGPT Assistant**.  
+- Uses the assistant’s internal model selection.  
 - Optionally works on rewritten cases.  
-- Designed to integrate with pre-configured guideline documents in the Assistant environment.  
+- Guidelines are retrieved by the assistant; PDFs must be available in its environment.
 
 ---
 

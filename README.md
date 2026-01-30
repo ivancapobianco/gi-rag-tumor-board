@@ -113,3 +113,13 @@ WARNING: You are about to use the dummy guideline corpus for demonstration.
 - If you abort or enter an invalid choice, the pipeline will fallback to the dummy corpus.
 
 4. Optionally, you can filter by **selected corpora** chunks when prompted.
+
+### 5. Optional: Rewriting Patient Cases
+
+All pipelines support using rewritten patient cases:
+
+- When prompted: `Use rewritten case? (y/n)`
+
+- If yes, the `rewrite.py` function reformats the case in a standardized, guideline-style format before processing.
+
+- Make sure `rewrite.py` is available in the `pipelines/` folder.

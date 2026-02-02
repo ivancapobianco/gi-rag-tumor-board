@@ -3,7 +3,7 @@
 This folder contains fully synthetic guideline excerpts provided solely to demonstrate
 the structure and functionality of the retrieval pipeline.
 
-No copyrighted guideline text is included.
+No guideline text is included.
 No clinical use is intended.
 
 The real study used German S3 and NCCN clinical practice guidelines accessed under

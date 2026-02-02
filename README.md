@@ -58,7 +58,7 @@ You can run any of the three pipelines (framework_1, framework_2, framework_3) o
 
 - Real patient-level clinical data
 
-- Copyrighted guideline texts (German S3, NCCN)
+- Guideline texts (German S3, NCCN)
 
 - API keys or credentials
 
